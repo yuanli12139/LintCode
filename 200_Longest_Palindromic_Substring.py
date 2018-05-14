@@ -10,8 +10,10 @@ Given the string = "abcdzdcab", return "cdzdc".
 Challenge
 O(n^2) time is acceptable. Can you do it in O(n) time.
 
+
 Author: Yuan Li
 Date: 5/13/2018 
+Difficulty: Medium
 '''
 
 class Solution:

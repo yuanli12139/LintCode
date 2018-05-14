@@ -12,8 +12,10 @@ Example
 Challenge
 O(n) time without extra memory.
 
+
 Author: Yuan Li
 Date: 5/12/2018 
+Difficulty: Easy
 '''
 
 class Solution:

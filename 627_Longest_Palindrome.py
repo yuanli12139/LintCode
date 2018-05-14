@@ -11,8 +11,10 @@ Given s = "abccccdd" return 7
 
 One longest palindrome that can be built is "dccaccd", whose length is 7.
 
+
 Author: Yuan Li
 Date: 5/13/2018 
+Difficulty: Easy
 '''
 
 class Solution:

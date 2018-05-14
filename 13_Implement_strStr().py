@@ -14,8 +14,10 @@ If source = "abcdabcdefg" and target = "bcd", return 1.
 Challenge
 O(n^2) is acceptable. Can you implement an O(n) algorithm? (hint: KMP)
 
+
 Author: Yuan Li
 Date: 5/12/2018 
+Difficulty: Easy
 '''
 
 class Solution:
