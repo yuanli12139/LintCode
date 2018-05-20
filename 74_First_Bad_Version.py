@@ -33,7 +33,6 @@ You can use SVNRepo.isBadVersion(10) to check whether version 10 is a
 bad version.
 """
 
-
 class Solution:
     """
     @param: n: An integer
