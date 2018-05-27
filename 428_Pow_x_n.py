@@ -8,6 +8,7 @@ Example
 Pow(2.1, 3) = 9.261
 Pow(0, 1) = 0
 Pow(1, 0) = 1
+
 Challenge
 O(logn) time
 
