@@ -24,9 +24,7 @@ class Solution:
         right = 0
         for i in range(len(nums)):
             if nums[right] != 0:
-                temp = nums[left]
-                nums[left] = nums[right]
-                nums[right] = temp
+                nums[left], nums[right] = nums[right], nums[left]
                 left += 1            
             right += 1
             
