@@ -42,5 +42,4 @@ class TwoSum:
             hashTable[num] = num
                 
         return False
-
-        
+ 
