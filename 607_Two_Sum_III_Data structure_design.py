@@ -14,7 +14,7 @@ find(7) // return false
 
 
 Author: Yuan Li
-Date: 6/12/2018 
+Date: 6/13/2018 
 Difficulty: Easy
 '''
 
