@@ -40,9 +40,9 @@ class Solution:
                 while left < right and nums[right] == nums[right+1]:
                     right -= 1
                 
-            if nums[left] + nums[right] > target:
+            elif nums[left] + nums[right] > target:
                 right -= 1
-            if nums[left] + nums[right] < target:
+            else:
                 left += 1
                 
         return count
