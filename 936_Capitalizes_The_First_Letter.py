@@ -9,8 +9,8 @@ Given s = "i want to get an accepted", return "I Want To Get An Accepted".
 
 
 Author: Yuan Li
-Date: 6/16/2018 
-Difficulty: Medium
+Date: 6/17/2018 
+Difficulty: Easy
 '''
 
 class Solution:
