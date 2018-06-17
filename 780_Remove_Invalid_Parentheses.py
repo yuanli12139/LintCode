@@ -23,23 +23,18 @@ class Solution:
     def removeInvalidParentheses(self, s):
         # Write your code here
         res = []
-        res = self.helper(res, s, len(s))
+        res = self.helper(res, s)
         
-        if res == []:
-            return [""]
         return res
         
-    def helper(self, res, s, n):
-        if n == 0:
-            return res
-        
+    def helper(self, res, s):
         if self.isValidParentheses(s):
             if s not in res:
                 res.append(s)
             return res
          
         l, r, pr = 0, 0, []
-        for i in range(n):
+        for i in range(len(s)):
             l += s[i] == '('
             if s[i] == ')':
                 r += 1
@@ -48,20 +43,20 @@ class Solution:
             if l < r:
                 for j in pr:
                     subs = s[:j] + s[j+1:] 
-                    res = self.helper(res, subs, n - 1)
+                    res = self.helper(res, subs)
                 break
 
         l, r, pl = 0, 0, []
-        for i in range(n):
-            if s[n - 1 - i] == '(':
+        for i in range(len(s)):
+            if s[len(s) - 1 - i] == '(':
                 l += 1
-                pl.append(n - 1 - i)
-            r += s[n - 1 - i] == ')'
+                pl.append(len(s) - 1 - i)
+            r += s[len(s) - 1 - i] == ')'
             
             if l > r:
                 for j in pl:
                     subs = s[:j] + s[j+1:]
-                    res = self.helper(res, subs, n - 1)
+                    res = self.helper(res, subs)
                 break
         
         return res
@@ -71,7 +66,6 @@ class Solution:
             return True
         
         stack = []
-        
         for c in s:
             if not stack: 
                 if c == '(' or c == ')':
