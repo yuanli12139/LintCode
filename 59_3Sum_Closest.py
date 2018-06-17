@@ -33,16 +33,19 @@ class Solution:
         diff = abs(numbers[0] + numbers[1] + numbers[2] - target)
         for i in range(0, len(numbers) - 2):
             left, right = i + 1, len(numbers) - 1
+            
             while left < right:
-                if abs(target - res) > abs(target - numbers[i] - numbers[left] - numbers[right]):
-                    res = numbers[i] + numbers[left] + numbers[right]
+                curr_sum = numbers[i] + numbers[left] + numbers[right]
+                
+                if abs(target - res) > abs(target - curr_sum):
+                    res = curr_sum
                 
                 if numbers[left] + numbers[right] < target - numbers[i]:
-                    diff = min(diff, target - numbers[i] - numbers[left] - numbers[right])
+                    diff = min(diff, target - curr_sum)
                     left += 1
                     
                 else:
-                    diff = min(diff, numbers[i] + numbers[left] + numbers[right] - target)
+                    diff = min(diff, numbers[i] + curr_sum - target)
                     right -= 1
                  
         return res
