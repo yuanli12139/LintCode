@@ -34,15 +34,11 @@ All possible pairs are returned from the sequence:
 Author: Yuan Li
 Date: 6/20/2018 
 Difficulty: Medium
-'''
 
-"""
-Definition of TreeNode:
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left, self.right = None, None
-"""
+
+Reference
+https://leetcode.com/problems/find-k-pairs-with-smallest-sums/discuss/84551/simple-Java-O(KlogK)-solution-with-explanation
+'''
 
 from heapq import *
 
