@@ -1,2 +1,2 @@
 # LintCode
-Keep track of LintCode exercises
+Keep track of LintCode/LeetCode exercises
