@@ -16,7 +16,7 @@ return its length 5.
 
 
 Author: Yuan Li
-Date: 6/22/2018 
+Date: 6/21/2018 
 Difficulty: Medium
 '''
 
