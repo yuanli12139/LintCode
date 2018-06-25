@@ -38,21 +38,23 @@ class Solution:
     def sequenceReconstruction(self, org, seqs):
         # write your code here
         # 1. create graph
+        # 1.1 create nodes
         graph = {}
+        for seq in seqs:
+            for n in seq:
+                graph[n] = set()
+        
+        # 1.2 create edges
         for seq in seqs:
             if len(seq) > 0 and (seq[0] < 1 or seq[0] > len(org)):
                 return False
                 
-            for i in range(len(seq)):
+            for i in range(len(seq) - 1):
                 if seq[i] < 1 or seq[i] > len(org):
                     return False
-                
-                if seq[i] not in graph:
-                    graph[seq[i]] = set([])
                         
-                for n in seq[i+1:]:
-                    graph[seq[i]].add(n)
-        
+                graph[seq[i]].add(seq[i+1])
+
         # 2. calculate in-degrees
         inDegrees = {}
         for node in graph:
@@ -72,6 +74,9 @@ class Solution:
         count = 0
         while len(queue) == 1:
             curr_node = queue.pop(0)
+            
+            if count > len(org) - 1:
+                return False
             
             if curr_node != org[count]:
                 return False
