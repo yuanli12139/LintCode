@@ -30,14 +30,13 @@ Return: [1,3],[2,3]
 All possible pairs are returned from the sequence:
 [1,3],[2,3]
 
+Reference
+https://leetcode.com/problems/find-k-pairs-with-smallest-sums/discuss/84551/simple-Java-O(KlogK)-solution-with-explanation
+
 
 Author: Yuan Li
 Date: 6/20/2018 
 Difficulty: Medium
-
-
-Reference
-https://leetcode.com/problems/find-k-pairs-with-smallest-sums/discuss/84551/simple-Java-O(KlogK)-solution-with-explanation
 '''
 
 from heapq import *
