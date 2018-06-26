@@ -6,6 +6,8 @@ Given a string which consists of lowercase or uppercase letters, find the length
 
 This is case sensitive, for example "Aa" is not considered a palindrome here.
 
+Assume the length of given string will not exceed 1010.
+
 Example
 Given s = "abccccdd" return 7
 
