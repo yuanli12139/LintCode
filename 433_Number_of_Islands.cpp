@@ -35,7 +35,7 @@ public:
             for (int c = 0; c < grid[0].size(); c++) {
                 if (grid[r][c]) {
                     grid[r][c] = false;
-                    BFSMark(grid, r, c);
+                    BFSVisit(grid, r, c);
                     islands++;
                 }
             }
@@ -44,13 +44,13 @@ public:
         return islands;
     }
     
-    void BFSMark(vector<vector<bool>> &grid, int r, int c) {
+    void BFSVisit(vector<vector<bool>> &grid, int r, int c) {
         vector<int> dr = {-1, 1, 0, 0};
         vector<int> dc = {0, 0, -1, 1};
         
         queue<pair<int, int>> islandQueue;
         islandQueue.push(pair<int, int> (r, c));
-        
+
         while (!islandQueue.empty()) {
             for (int i = 0; i < islandQueue.size(); i++) {
                 pair<int, int> curr = islandQueue.front();
