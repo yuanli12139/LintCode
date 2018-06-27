@@ -61,7 +61,7 @@ class Solution:
             return start
         return end
         
-    def isLeftClosest(self, A, target, left, right):
+    def isLeftCloser(self, A, target, left, right):
         if left < 0:
             return False
         if right > len(A) - 1:
