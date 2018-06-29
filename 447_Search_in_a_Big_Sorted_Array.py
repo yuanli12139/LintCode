@@ -6,6 +6,8 @@ Given a big sorted array with positive integers sorted by ascending order. The a
 
 Return -1, if the number doesn't exist in the array.
 
+If you accessed an inaccessible index (outside of the array), ArrayReader.get will return 2,147,483,647.
+
 Example
 Given [1, 3, 6, 9, 21, ...], and target = 3, return 1.
 
