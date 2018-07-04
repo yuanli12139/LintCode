@@ -1,5 +1,4 @@
 /*
-627. Longest Palindrome
 69. Binary Tree Level Order Traversal
 Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
 
@@ -20,6 +19,7 @@ return its level order traversal as:
   [9,20],
   [15,7]
 ]
+
 Challenge
 Challenge 1: Using only 1 queue to implement it.
 
