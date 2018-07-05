@@ -65,7 +65,7 @@ public:
             
             int size = treeQueue.size();
             for (int i = 0; i < size; i++) {
-                TreeNode * currNode = treeQueue.front();
+                TreeNode *currNode = treeQueue.front();
                 treeQueue.pop();
                 
                 level.push_back(currNode->val);
