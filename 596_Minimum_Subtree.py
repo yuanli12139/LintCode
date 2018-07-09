@@ -24,27 +24,37 @@ Date: 7/7/2018
 Difficulty: Easy
 '''
 
+"""
+Definition of TreeNode:
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+"""
+
 class Solution:
     """
-    @param s: a string
-    @return: return List[str]
+    @param root: the root of binary tree
+    @return: the root of the minimum subtree
     """
-    def findRepeatedDnaSequences(self, s):
+    def __init__(self):
+        self.minSubTree = None
+        self.minSum = float("inf")
+    
+    def findSubtree(self, root):
         # write your code here
-        res = []
-        hashTable = {}
-        for i in range(len(s) - 9):
-            sub = s[i:i+10]
-
-            if sub in hashTable:
-                hashTable[sub] += 1
-                
-            else:
-                hashTable[sub] = 1
-                
-        for k in hashTable:
-            if hashTable[k] > 1:
-                res.append(k)
-                
-        return res
+        self.helper(root)
+        return self.minSubTree
+        
+    def helper(self, node):
+        if node == None:
+            return 0
+            
+        s = node.val + self.helper(node.left) + self.helper(node.right)
+        
+        if s < self.minSum:
+            self.minSum = s
+            self.minSubTree = node
+            
+        return s
         
