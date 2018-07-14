@@ -53,7 +53,7 @@ class Solution:
         if node == None:
             return None
             
-        if node.val >= target:
+        if target <= node.val:
             return self.lowerClosest(node.left, target)
             
         lower = self.lowerClosest(node.right, target)
@@ -66,10 +66,10 @@ class Solution:
         if node == None:
             return None
         
-        if node.val <= target:
+        if target >= node.val:
             return self.upperClosest(node.right, target)
             
-        upper = self.upperClosest(node., target)
+        upper = self.upperClosest(node.left, target)
         if upper:
             return upper
             
