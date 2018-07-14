@@ -66,7 +66,7 @@ class Solution:
         if node == None:
             return None
         
-        if target >= node.val:
+        if target > node.val:
             return self.upperClosest(node.right, target)
             
         upper = self.upperClosest(node.left, target)
