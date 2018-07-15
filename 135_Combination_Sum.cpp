@@ -52,6 +52,7 @@ public:
         }
         
         for (int i = startIdx; i < candidates.size(); ++i) {
+            // remove duplicates
             if (i != startIdx && candidates[i] == candidates[i-1])
                 continue;
                 
