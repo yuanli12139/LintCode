@@ -56,8 +56,7 @@ public:
         if (p[pIdx] == '*') {
             match = dfs(s, sIdx, p, pIdx + 1, isVisited, memo) || 
                     dfs(s, sIdx + 1, p, pIdx, isVisited, memo);
-        }
-        else {
+        } else {
             match = isCharMatch(s, sIdx, p, pIdx) && 
                     dfs(s, sIdx + 1, p, pIdx + 1, isVisited, memo);
         }
