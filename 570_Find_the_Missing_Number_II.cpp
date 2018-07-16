@@ -2,6 +2,8 @@
 570. Find the Missing Number II
 Giving a string with number from 1-n in random order, but miss 1 number.Find that number.
 
+n <= 30
+
 Example
 Given n = 20, str = 19201234567891011121314151618
 
@@ -31,8 +33,9 @@ public:
             if (count(foundNums.begin(), foundNums.end(), false) != 1)
                 return -1;
             else
-                return distance(foundNums.begin(), find(
-                        foundNums.begin(), foundNums.end(), false)) + 1;
+                // return distance(foundNums.begin(), find(
+                //         foundNums.begin(), foundNums.end(), false)) + 1;
+                return find(foundNums.begin(), foundNums.end(), false) - foundNums.begin() + 1;
         }
         
         int n = foundNums.size();
