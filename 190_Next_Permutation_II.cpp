@@ -48,9 +48,7 @@ public:
             
             swap(nums, i-1, j);
             reverse(nums.begin() + i, nums.end());
-        }
-        
-        else {
+        } else {
             reverse(nums.begin(), nums.end());
         }
     }
