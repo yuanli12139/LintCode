@@ -19,6 +19,7 @@ For nums = [1,2,3], the permutations are:
 Challenge
 Do it without recursion.
 
+
 Author: Yuan Li
 Date: 7/17/2018 
 Difficulty: Medium
@@ -60,5 +61,59 @@ public:
             perm.pop_back();
             visited[i] = false;
         }
+    }
+};
+
+
+// Date: 7/18/2018 
+// non-recursion
+class Solution {
+public:
+    /*
+     * @param nums: a list of integers
+     * @return: a list of permutations
+     */
+    vector<vector<int>> permute(vector<int> &nums) {
+        // write your code here
+        vector<vector<int>> res;
+        sort(nums.begin(), nums.end());
+        
+        bool next = true;
+        while(next) { 
+            res.push_back(nums);
+            next = nextPermutation(nums);
+        }
+        
+        return res; 
+    }
+    
+    bool nextPermutation(vector<int> &nums) {
+        if (nums.size() <= 1)
+            return false;
+            
+        int i = nums.size() - 1;
+        while (i > 0 && nums[i] <= nums[i-1]) {
+            i--;
+        }
+        
+        if (i > 0) {
+            int j = nums.size() - 1;
+            while (i < j && nums[i-1] >= nums[j]) {
+                j--;
+            }
+            
+            swap(nums, i-1, j);
+            reverse(nums.begin() + i, nums.end());
+            
+            return true;
+        }
+        
+        return false;
+    }
+    
+    void swap(vector<int> &nums, int idx1, int idx2) {
+        int temp = nums[idx1];
+        nums[idx1] = nums[idx2];
+        nums[idx2] = temp;
     }
 };
