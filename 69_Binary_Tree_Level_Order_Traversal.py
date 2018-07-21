@@ -21,6 +21,7 @@ return its level order traversal as:
   [9,20],
   [15,7]
 ]
+
 Challenge
 Challenge 1: Using only 1 queue to implement it.
 

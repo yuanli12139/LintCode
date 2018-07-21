@@ -6,6 +6,7 @@ Given two words (start and end), and a dictionary, find the length of shortest t
 
 Only one letter can be changed at a time
 Each intermediate word must exist in the dictionary
+
 Example
 Given:
 start = "hit"
