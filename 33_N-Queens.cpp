@@ -86,6 +86,8 @@ public:
         return queens;
     }
     
+    // this function can be optimized using 3 boolean vectors 
+    // see 34_N-Queens_II.py
     bool isValid(vector<int> &cols, int new_c) {
         int new_r = cols.size();
         for (int r = 0; r < cols.size(); ++r) {
