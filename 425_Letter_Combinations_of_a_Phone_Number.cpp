@@ -7,6 +7,8 @@ A mapping of digit to letters (just like on the telephone buttons) is given belo
 Picture
 https://lintcode-media.s3.amazonaws.com/problem/200px-Telephone-keypad2.svg.png
 
+Although the above answer is in lexicographical order, your answer could be in any order you want.
+
 Example
 Given "23"
 
