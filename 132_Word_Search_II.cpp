@@ -15,24 +15,24 @@ and dictionary:
 return {"dog", "dad", "can", "again"}
 
 dog:
-doaf
-agai
-dcan
+[d][o] a  f
+ a [g] a  i
+ d  c  a  n
 
 dad:
-doaf
-agai
-dcan
+[d] o  a  f
+[a] g  a  i
+[d] c  a  n
 
 can:
-doaf
-agai
-dcan
+ d  o  a  f
+ a  g  a  i
+ d [c][a][n]
 
 again:
-doaf
-agai
-dcan
+ d  o  a  f
+[a][g][a][i]
+ d  c  a [n]
 
 Challenge
 Using trie to implement your algorithm.
