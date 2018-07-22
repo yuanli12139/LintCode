@@ -14,7 +14,7 @@ Given pattern = "aabb", str = "xyzabcxzyabc", return false.
 
 Author: Yuan Li
 Date: 7/21/2018 
-Difficulty: Medium
+Difficulty: Hard
 */
 
 class Solution {
