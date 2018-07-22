@@ -4,12 +4,11 @@ Given a matrix of lower alphabets and a dictionary. Find all words in the dictio
 
 Example
 Given matrix:
+ d  o  a  f
+ a  g  a  i
+ d  c  a  n
 
-doaf
-agai
-dcan
 and dictionary:
-
 {"dog", "dad", "dgdg", "can", "again"}
 
 return {"dog", "dad", "can", "again"}
