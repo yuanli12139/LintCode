@@ -57,13 +57,13 @@ public:
             if (has_minGreater) {
                 string next_time = time;
                 
-                // next_time[i] = minGreater
-                next_time.replace(i, 1, 1, minGreater);
+                next_time[i] = minGreater;
+                // next_time.replace(i, 1, 1, minGreater);
                 
                 for (int k : hands) {
                     if (k > i) {
-                        // next_time[k] = minDigit;
-                        next_time.replace(k, 1, 1, minDigit);
+                        next_time[k] = minDigit;
+                        // next_time.replace(k, 1, 1, minDigit);
                     }
                 }
                 
@@ -75,8 +75,8 @@ public:
         
         res = time;
         for (int i : hands) {
-            // res[i] = minDigit;
-            res.replace(i, 1, 1, minDigit);
+            res[i] = minDigit;
+            // res.replace(i, 1, 1, minDigit);
         }
 
         return res;
