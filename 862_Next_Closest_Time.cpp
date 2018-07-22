@@ -31,16 +31,15 @@ public:
         string res;
         
         vector<int> hands = {4, 3, 1, 0};
-        char min_digit = '9';
+        char minDigit = '9';
         for (int i : hands) {
             char digit = time[i];
-            if (digit < min_digit) {
-                min_digit = digit;
+            if (digit < minDigit) {
+                minDigit = digit;
             }
         }
         
         for (int i : hands) {
-            char curr_digit = time[i];
             char minGreater = '9';
             bool has_minGreater = false;
             
@@ -49,7 +48,7 @@ public:
                     continue;
                 }
                 
-                if (time[j] > curr_digit && time[j] <= minGreater) {
+                if (time[j] > time[i] && time[j] <= minGreater) {
                     minGreater = time[j];
                     has_minGreater = true;
                 }
@@ -57,10 +56,14 @@ public:
             
             if (has_minGreater) {
                 string next_time = time;
+                
+                // next_time[i] = minGreater
                 next_time.replace(i, 1, 1, minGreater);
+                
                 for (int k : hands) {
                     if (k > i) {
-                        next_time.replace(k, 1, 1, min_digit);
+                        // next_time[k] = minDigit;
+                        next_time.replace(k, 1, 1, minDigit);
                     }
                 }
                 
@@ -72,7 +75,8 @@ public:
         
         res = time;
         for (int i : hands) {
-            res.replace(i, 1, 1, min_digit);
+            // res[i] = minDigit;
+            res.replace(i, 1, 1, minDigit);
         }
 
         return res;
