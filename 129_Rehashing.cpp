@@ -91,7 +91,7 @@ public:
         
         start_node->next = new ListNode(val);
         
-        // // recursion way
+        // // the recursion way
         // if (start_node->next != NULL) {
         //     addNode2List(start_node->next, val);
         // } else {
