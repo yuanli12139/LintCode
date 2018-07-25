@@ -47,3 +47,37 @@ public:
         return str[idx];
     }
 };
+
+
+// no extra space
+class Solution {
+public:
+    /**
+     * @param str: str: the given string
+     * @return: char: the first unique character in a given string
+     */
+    char firstUniqChar(string &str) {
+        // Write your code here
+        char res;
+        
+        for (int i = 0; i < str.length(); ++i) {
+            int j = 0;
+            for (; j < str.length(); ++j) {
+                if (i == j) {
+                    continue;
+                }
+                
+                if (str[i] == str[j]) {
+                    break;
+                }
+            }
+            
+            if (j == str.length()) {
+                res = str[i];
+                break;
+            }
+        }
+        
+        return res;
+    }
+};
