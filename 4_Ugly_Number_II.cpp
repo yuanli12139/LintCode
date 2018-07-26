@@ -18,6 +18,7 @@ Date: 7/25/2018
 Difficulty: Medium
 */
 
+// priority queue - O(nlogn)
 class Solution {
 public:
     /**
@@ -48,5 +49,34 @@ public:
         }
         
         return res;
+    }
+};
+
+
+// 3 pointers - O(n)
+class Solution {
+public:
+    /**
+     * @param n: An integer
+     * @return: the nth prime number as description.
+     */
+    int nthUglyNumber(int n) {
+        // write your code here
+        long lastNum = 1;
+        vector<long> uglyNums = {lastNum};
+        int p2 = 0, p3 = 0, p5 = 0;
+        
+        while (n-- > 1) {
+            lastNum = uglyNums.back();
+            
+            if (uglyNums[p2] * 2 == lastNum) p2++;
+            if (uglyNums[p3] * 3 == lastNum) p3++;
+            if (uglyNums[p5] * 5 == lastNum) p5++;
+            
+            long minUglyNum = min(min(uglyNums[p2] * 2, uglyNums[p3] * 3), uglyNums[p5] * 5);
+            uglyNums.push_back(minUglyNum);
+        }
+        
+        return uglyNums.back();
     }
 };
