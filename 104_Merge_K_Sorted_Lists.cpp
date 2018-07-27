@@ -59,8 +59,8 @@ public:
             }
         }               
         
-        ListNode* head = new ListNode();
-        ListNode* tail = head;
+        ListNode* dummy = new ListNode();
+        ListNode* tail = dummy;
         while (!pq.empty()) {
             ListNode* node = pq.top();
             pq.pop();
@@ -74,6 +74,6 @@ public:
             }
         }
         
-        return head->next;
+        return dummy->next;
     }
 };
