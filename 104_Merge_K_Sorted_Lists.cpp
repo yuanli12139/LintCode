@@ -147,3 +147,58 @@ public:
         return dummy->next;
     }
 };
+
+
+// divide & conquer
+class Solution {
+public:
+    /**
+     * @param lists: a list of ListNode
+     * @return: The head of one sorted list.
+     */
+    ListNode *mergeKLists(vector<ListNode *> &lists) {
+        // write your code here
+        if (lists.empty()) {
+            return nullptr;
+        }
+        
+        return merge(lists, 0, lists.size() - 1);
+    }
+    
+    ListNode* merge(vector<ListNode*> &lists, int start, int end) {
+        if (start == end) {
+            return lists[start];
+        }
+        
+        int mid = start + (end - start) / 2;
+        ListNode* left = merge(lists, start, mid);
+        ListNode* right = merge(lists, mid + 1, end);
+        
+        return merge2Lists(left, right);
+    }
+    
+    ListNode* merge2Lists(ListNode* l1, ListNode* l2) {
+        ListNode* dummy = new ListNode();
+        ListNode* tail = dummy;
+        
+        while (l1 && l2) {
+            if (l1->val < l2->val) {
+                tail->next = l1;
+                l1 = l1->next;
+            } else {
+                tail->next = l2;
+                l2 = l2->next;
+            }
+            
+            tail = tail->next;
+        }
+        
+        if (l1) {
+            tail->next = l1;
+        } else {
+            tail->next = l2;
+        }
+        
+        return dummy->next;
+    }
+};
