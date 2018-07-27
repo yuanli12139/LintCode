@@ -149,7 +149,7 @@ public:
 };
 
 
-// divide & conquer
+// divide & conquer - O(nlogK)
 class Solution {
 public:
     /**
