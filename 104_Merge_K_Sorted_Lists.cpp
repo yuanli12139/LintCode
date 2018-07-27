@@ -33,7 +33,7 @@ Difficulty: Medium
  * }
  */
  
- // priority queue
+ // priority queue - Klog(n)
 class Solution {
 public:
     /**
