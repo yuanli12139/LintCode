@@ -77,3 +77,73 @@ public:
         return dummy->next;
     }
 };
+
+
+// merge two by two - O(nlogK)
+class Solution {
+public:
+    /**
+     * @param lists: a list of ListNode
+     * @return: The head of one sorted list.
+     */
+    ListNode *mergeKLists(vector<ListNode *> &lists) {
+        // write your code here
+        if (lists.empty()) {
+            return nullptr;
+        }
+        
+        while (lists.size() > 1) {
+            vector<ListNode*> new_lists;
+            for (int i = 0; i + 1 < lists.size(); i += 2) {
+                ListNode* new_list = merge2Lists(lists[i], lists[i+1]);
+                new_lists.push_back(new_list);
+            }
+            
+            if (lists.size() % 2 == 1) {
+                new_lists.push_back(lists.back());
+            }
+            
+            lists = new_lists;
+        }
+        
+        return lists[0];
+    }
+    
+    ListNode* merge2Lists(ListNode* l1, ListNode* l2) {
+        ListNode* dummy = new ListNode();
+        ListNode* tail = dummy;
+        
+        while (l1 && l2) {
+            if (l1->val < l2->val) {
+                tail->next = l1;
+                l1 = l1->next;
+            } else {
+                tail->next = l2;
+                l2 = l2->next;
+            }
+            
+            tail = tail->next;
+        }
+        
+        // while (l1) {
+        //     tail->next = l1;
+        //     tail = l1;
+        //     l1 = l1->next;
+        // }
+        
+        // while (l2) {
+        //     tail->next = l2;
+        //     tail = l2;
+        //     l2 = l2->next;
+        // }
+        
+        // no need to update tail
+        if (l1) {
+            tail->next = l1;
+        } else {
+            tail->next = l2;
+        }
+
+        return dummy->next;
+    }
+};
