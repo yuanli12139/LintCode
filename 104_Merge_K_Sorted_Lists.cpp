@@ -33,7 +33,7 @@ Difficulty: Medium
  * }
  */
  
- // priority queue - nlog(K)
+ // priority queue - O(nlogK)
 class Solution {
 public:
     /**
