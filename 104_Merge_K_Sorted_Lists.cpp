@@ -79,6 +79,7 @@ public:
 };
 
 
+// Date: 7/26/2018 
 // merge two by two - O(nlogK)
 class Solution {
 public:
@@ -149,6 +150,7 @@ public:
 };
 
 
+// Date: 7/26/2018
 // divide & conquer - O(nlogK)
 class Solution {
 public:
