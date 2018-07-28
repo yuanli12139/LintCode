@@ -10,7 +10,7 @@ O(nlogn) time
 
 Author: Yuan Li
 Date: 7/27/2018 
-Difficulty: Easy
+Difficulty: Medium
 */
 
 class Solution {
