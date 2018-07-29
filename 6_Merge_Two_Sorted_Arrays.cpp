@@ -41,11 +41,9 @@ public:
 
         while (i < A.size() && j < B.size()) {
             if (A[i] < B[j]) {
-                res.push_back(A[i]);
-                i++;
+                res.push_back(A[i++]);
             } else {
-                res.push_back(B[j]);
-                j++;
+                res.push_back(B[j++]);
             }
         }
         
