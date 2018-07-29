@@ -26,9 +26,7 @@ public:
      * @return: A new sorted integer array
      */
     vector<int> mergeSortedArray(vector<int> &A, vector<int> &B) {
-        // write your code here
-        vector<int> res;
-        
+        // write your code here        
         if (A.empty()) {
             return B;
         }
@@ -38,6 +36,7 @@ public:
         }
         
         int i = 0, j = 0;
+        vector<int> res;
         res.reserve(A.size() + B.size());
 
         while (i < A.size() && j < B.size()) {
