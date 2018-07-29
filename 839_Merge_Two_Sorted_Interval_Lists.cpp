@@ -62,7 +62,6 @@ public:
             merge(res, buffer);
         }
         
-        
         while (i < list1.size()) {
             merge(res, list1[i++]);
         }
