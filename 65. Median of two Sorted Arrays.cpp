@@ -57,7 +57,7 @@ public:
             }
         }
         
-        if (countSmallerEqual(A, start) + countSmallerEqual(B, start) >= k) {
+        if (countSmallerEqual(A, start) + countSmallerEqual(B, start) == k) {
             return start;
         }
         
