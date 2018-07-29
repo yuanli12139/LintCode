@@ -90,3 +90,120 @@ public:
         return arr.size();
     }
 };
+
+
+// exclusion - O(log(m + n))
+class Solution {
+public:
+    /*
+     * @param A: An integer array
+     * @param B: An integer array
+     * @return: a double whose format is *.5 or *.0
+     */
+    class PartialArr {
+    public:
+        PartialArr(const vector<int> &arr) {
+            arr_ = arr;
+            start_ = 0;
+            end_ = arr.size() - 1;
+        }
+        
+        int size() {
+            return end_ - start_ + 1;
+        }
+        
+        double getMedian() {
+            return (getLowerMedian() + getUpperMedian()) / 2.;
+        }
+        
+        int getLowerMedianIdx() {
+            return (start_ + end_) / 2;
+        }
+        
+        int getUpperMedianIdx() {
+            return (start_ + end_ + 1) / 2;
+        }
+        
+        int getLowerMedian() {
+            return arr_[getLowerMedianIdx()];
+        }
+        
+        int getUpperMedian() {
+            return arr_[getUpperMedianIdx()];
+        }
+        
+        int numRemoveLower(int idx) {
+            return idx - start_ + 1;
+        }
+        
+        int numRemoveUpper(int idx) {
+            return end_ - idx + 1; 
+        }
+        
+        void removeLower(int n) {
+            start_ += n;
+        }
+        
+        void removeUpper(int n) {
+            end_ -= n;
+        }
+        
+        bool empty() {
+            return size() == 0;
+        }
+        
+    private:
+        vector<int> arr_;
+        int start_, end_;
+    };
+    
+    double findMedianSortedArrays(vector<int> &A, vector<int> &B) {
+        // write your code here
+        PartialArr partialA(A);
+        PartialArr partialB(B);
+        
+        return median(partialA, partialB);
+    }
+    
+    double median(PartialArr &A, PartialArr &B) {
+        while (!A.empty() && !B.empty()) {
+            if (A.size() == 1 && B.size() == 1) {
+                return (A.getMedian() + B.getMedian()) / 2.;
+            }
+            
+            // locate lower median
+            PartialArr* lowerMedianArr = &A;
+            int lowerMedianIdx = A.getLowerMedianIdx();
+            if (A.getLowerMedian() > B.getLowerMedian()) {
+                lowerMedianArr = &B;
+                lowerMedianIdx = B.getLowerMedianIdx();
+            }
+            
+            // locate upper median
+            PartialArr* upperMedianArr = &A;
+            int upperMedianIdx = A.getUpperMedianIdx();
+            if (A.getUpperMedian() < B.getUpperMedian()) {
+                upperMedianArr = &B;
+                upperMedianIdx = B.getUpperMedianIdx();
+            }
+            
+            // early stop - two arrays have a same single median
+            if (lowerMedianArr->getLowerMedian() == upperMedianArr->getUpperMedian()) {
+                return lowerMedianArr->getLowerMedian();
+            }
+            
+            // remove same number of small and large numbers
+            int minRemove = min(lowerMedianArr->numRemoveLower(lowerMedianIdx), 
+                                upperMedianArr->numRemoveUpper(upperMedianIdx));
+
+            lowerMedianArr->removeLower(minRemove);
+            upperMedianArr->removeUpper(minRemove);
+        }
+
+        if (A.empty()) {
+            return B.getMedian();
+        }
+        
+        return A.getMedian();
+    }
+};
