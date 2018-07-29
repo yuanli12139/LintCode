@@ -13,7 +13,7 @@ The overall run time complexity should be O(log (m+n)).
 
 Author: Yuan Li
 Date: 7/28/2018 
-Difficulty: Medium
+Difficulty: Hard
 */
 
 // binary search - O(log(range) * log(m) + log(n))
