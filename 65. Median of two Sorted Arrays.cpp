@@ -86,7 +86,7 @@ public:
             return end;
         }
         
-        // all numbers in arr < num, return the number of numbers in arr
+        // all numbers in arr < num or arr[end] == num, return the number of numbers in arr
         return arr.size();
     }
 };
