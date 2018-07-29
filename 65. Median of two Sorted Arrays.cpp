@@ -16,7 +16,7 @@ Date: 7/28/2018
 Difficulty: Hard
 */
 
-// binary search - O(log(range) * log(m) + log(n))
+// binary search - O(log(range) * (log(m) + log(n)))
 // range: range between the min and the max integer, i.e. max(max(A), max(B)) - min(min(A), min(B)) + 1
 class Solution {
 public:
