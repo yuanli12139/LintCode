@@ -102,3 +102,67 @@ public:
     }
 };
 
+
+// sort & binary search - O((n + m)log(m))
+class Solution {
+public:
+    
+    /*
+     * @param nums1: an integer array
+     * @param nums2: an integer array
+     * @return: an integer array
+     */
+    vector<int> intersection(vector<int> nums1, vector<int> nums2) {
+        // write your code here
+        unordered_set<int> res_set;
+        
+        if (nums1.empty() || nums2.empty()) {
+            return {};
+        }
+        
+        if (nums1.size() < nums2.size()) {
+            sort(nums1.begin(), nums1.end());
+            
+            for (int n : nums2) {
+                if (binarySearch(nums1, n)) {
+                    res_set.insert(n);
+                }
+            }
+        } else {
+            sort(nums2.begin(), nums2.end());
+            
+            for (int n : nums1) {
+                if (binarySearch(nums2, n)) {
+                    res_set.insert(n);
+                }
+            }
+        }
+        
+        
+        vector<int> res(res_set.begin(), res_set.end());
+        
+        return res;
+    }
+    
+    bool binarySearch(const vector<int> &nums, int target) {
+        int start = 0, end = nums.size() - 1;
+        while (start + 1 < end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] == target) {
+                return true;
+            }
+            
+            if (nums[mid] < target) {
+                start = mid;
+            } else {
+                end = mid;
+            }
+        }
+        
+        if (nums[start] == target || nums[end] == target) {
+            return true;
+        }
+        
+        return false;
+    }
+};
