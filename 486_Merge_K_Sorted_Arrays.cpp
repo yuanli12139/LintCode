@@ -21,7 +21,7 @@ k is the number of arrays.
 
 Author: Yuan Li
 Date: 7/29/2018 
-Difficulty: Easy
+Difficulty: Medium
 */
 
 class Solution {
