@@ -56,3 +56,67 @@ public:
         return res;
     }
 };
+
+
+// priority queue - O(knlog(n) + nklog(k))
+class Solution {
+public:
+    /**
+     * @param arrs: the arrays
+     * @return: the number of the intersection of the arrays
+     */
+    int intersectionOfArrays(vector<vector<int>> &arrs) {
+        // write your code here
+        int res = 0;
+        
+        if (arrs.empty()) {
+            return res;
+        }
+        
+        auto comp = [](const pair<int, pair<int, int>> &lhs, const pair<int, pair<int, int>> &rhs) {
+            return lhs.first > rhs.first;    
+        };
+        priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, decltype(comp)> pq(comp);
+        
+        for (int i = 0; i < arrs.size(); ++i) {
+            if (arrs[i].empty()) {
+                return res;
+            }
+            
+            sort(arrs[i].begin(), arrs[i].end());
+            
+            pair<int, pair<int, int>> head(arrs[i][0], pair<int, int>(i, 0));
+            pq.push(head);
+        }
+        
+        int cnt = 0, last;
+        while (!pq.empty()) {
+            if (cnt == 0) {
+                last = pq.top().first;
+            }
+            
+            if (pq.top().first != last) {
+                last = pq.top().first;
+                cnt = 0;
+            }
+            
+            cnt++;
+
+            if (cnt == arrs.size()) {
+                res++;
+                cnt = 0;
+            }
+            
+            int next_i = pq.top().second.first;
+            int next_j = pq.top().second.second + 1;
+            if (next_j < arrs[next_i].size()) {
+                pair<int, pair<int, int>> next(arrs[next_i][next_j], pair<int, int>(next_i, next_j));
+                pq.push(next);
+            }
+            
+            pq.pop();
+        }
+    
+        return res;
+    }
+};
