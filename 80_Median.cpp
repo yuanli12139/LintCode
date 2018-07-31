@@ -63,7 +63,6 @@ public:
                 i++;
                 j--;
             }
-            
         }
             
         if (j - start + 1 >= k) {
