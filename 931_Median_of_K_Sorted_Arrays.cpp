@@ -15,7 +15,7 @@ Date: 7/30/2018
 Difficulty: Medium
 */
 
-// binary search - O(log(range) * klog(n))
+// binary search - O(log(range) * klog(n)) = O(32klog(n))
 // range: range between the min and the max integer, i.e. INT_MAX - 1 + 1
 class Solution {
 public:
