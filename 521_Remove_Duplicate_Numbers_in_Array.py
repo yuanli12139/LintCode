@@ -54,6 +54,7 @@ class Solution:
             
             else:
                 nums[i], nums[j] = nums[j], nums[i]
-                
-        return len(s)
+         
+        # return len(s)        
+        return i
         
