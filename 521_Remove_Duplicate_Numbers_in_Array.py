@@ -9,6 +9,9 @@ You should:
 Do it in place in the array.
 Move the unique numbers to the front of the array.
 Return the total number of the unique numbers.
+
+You don't need to keep the original order of the integers.
+
 Example
 Given nums = [1,3,1,4,4,2], you should:
 
