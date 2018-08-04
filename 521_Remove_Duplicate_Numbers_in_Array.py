@@ -52,8 +52,7 @@ class Solution:
                 j += 1
                 continue
             
-            else:
-                nums[i], nums[j] = nums[j], nums[i]
+            nums[i], nums[j] = nums[j], nums[i]
          
         # return len(s)        
         return i
