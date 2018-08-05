@@ -56,6 +56,7 @@ class Solution:
         if target <= node.val:
             return self.lowerClosest(node.left, target)
             
+        # look for a node with val that is between target and node->val
         lower = self.lowerClosest(node.right, target)
         if lower:
             return lower
@@ -68,7 +69,8 @@ class Solution:
         
         if target > node.val:
             return self.upperClosest(node.right, target)
-            
+        
+        # look for a node with val that is between target and node->val    
         upper = self.upperClosest(node.left, target)
         if upper:
             return upper
