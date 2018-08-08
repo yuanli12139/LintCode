@@ -69,4 +69,4 @@ class Solution:
                 blkSet[r/3*3+c/3].remove(num)
                 
         return False   
-        
+    
