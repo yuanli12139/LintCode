@@ -31,7 +31,6 @@ class Solution:
         while start < len(str):
             if str[start] == ' ' or str[start] == '+' or str[start] == '-':
                 start += 1
-                continue
             else:
                 break
         
@@ -63,4 +62,3 @@ class Solution:
             return res
             
         return 0
-        
