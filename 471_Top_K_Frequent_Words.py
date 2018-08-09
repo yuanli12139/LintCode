@@ -56,6 +56,7 @@ class Solution:
         mostK = []
         for word, cnt in word_cnt.items():
             heapq.heappush(mostK, WordCount(word, cnt))
+            
             if len(mostK) > k:
                 heapq.heappop(mostK)
                 
