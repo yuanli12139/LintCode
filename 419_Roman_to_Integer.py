@@ -45,6 +45,6 @@ class Solution:
                 res += romanDict[s[i]]
                 
         res += romanDict[s[-1]]
-            
+
         return res
-            
+   
