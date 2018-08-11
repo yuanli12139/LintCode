@@ -39,8 +39,8 @@ class Solution:
                 sorted2strs[sorted_str].append(s)
                 
         res = []
-        for _, strs in sorted2strs.items():
-            if len(strs) > 1:
-                res += strs
+        for _, str_list in sorted2strs.items():
+            if len(str_list) > 1:
+                res += str_list
                 
         return res
