@@ -23,6 +23,7 @@ Date: 8/10/2018
 Difficulty: Medium
 '''
 
+# sort - O(nklog(k))
 class Solution:
     """
     @param strs: A list of strings
