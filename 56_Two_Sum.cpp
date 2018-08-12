@@ -1,6 +1,4 @@
-#!/usr/bin/python3
-
-'''
+/*
 56. Two Sum
 Given an array of integers, find two numbers such that they add up to a specific target number.
 
@@ -23,7 +21,7 @@ You may assume that each input would have exactly one solution
 Author: Yuan Li
 Date: 8/11/2018 
 Difficulty: Easy
-'''
+*/
 
 class Solution {
 public:
