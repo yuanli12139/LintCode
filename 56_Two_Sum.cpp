@@ -24,6 +24,9 @@ Date: 8/11/2018
 Difficulty: Easy
 */
 
+// sort
+// time: O(nlog(n))
+// space: O(n)
 class Solution {
 public:
     /**
