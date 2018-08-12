@@ -64,3 +64,33 @@ public:
         return res;
     }
 };
+
+
+// hash table
+// time: O(n)
+// space: O(n)
+class Solution {
+public:
+    /**
+     * @param numbers: An array of Integer
+     * @param target: target = numbers[index1] + numbers[index2]
+     * @return: [index1, index2] (index1 < index2)
+     */
+    vector<int> twoSum(vector<int> &numbers, int target) {
+        // write your code here
+        vector<int> res;
+        
+        unordered_map<int, int> num2idx;
+        for (int i = 0; i < numbers.size(); ++i) {
+            if (num2idx.count(target - numbers[i])) {
+                res = {num2idx[target - numbers[i]], i};
+                break;
+            }
+            else {
+                num2idx[numbers[i]] = i;
+            }
+        }
+        
+        return res;
+    }
+};
