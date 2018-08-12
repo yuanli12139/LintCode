@@ -54,12 +54,8 @@ class Solution:
                 if abs(top) > abs(asteroid):
                     stk.append(top)
                     break
-                
-            if top + asteroid == 0:
-                continue
             
             if len(stk) == 0 or abs(top) < abs(asteroid):  
                 stk.append(asteroid)
              
         return stk
-   
