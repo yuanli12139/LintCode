@@ -14,8 +14,8 @@ Date: 8/11/2018
 Difficulty: Medium
 '''
 
-# Time: O(n^2)
-# Space: O(n^2)
+# time: O(n^2)
+# space: O(n^2)
 class Solution:
     """
     @param s: the maximum length of s is 1000
@@ -47,8 +47,8 @@ class Solution:
         return dp[0][n-1]
 
 
-# Time: O(n^2)
-# Space: O(n)
+# time: O(n^2)
+# space: O(n)
 class Solution:
     """
     @param s: the maximum length of s is 1000
