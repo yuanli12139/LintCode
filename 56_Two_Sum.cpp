@@ -44,10 +44,6 @@ public:
             [](const auto &a, const auto &b) -> bool {
                 return a.first < b.first;
             });
-        
-        for (auto item : num_idx) {
-            cout << item.first << ", " << item.second << endl;
-        }
             
         int i = 0, j = num_idx.size() - 1;
         while (i < j) {
