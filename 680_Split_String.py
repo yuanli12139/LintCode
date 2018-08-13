@@ -14,36 +14,32 @@ Date: 8/4/2018
 Difficulty: Easy
 '''
 
-class Solution {
-public:
-    /*
-     * @param : a string to be split
-     * @return: all possible split string array
-     */
-    vector<vector<string>> splitString(string& s) {
-        // write your code here
-        vector<vector<string>> res;
-        vector<string> comb;
-        
-        if (s.length() == 0) {
-            res.push_back(comb);
-            return res;
-        }
-            
-        dfs(s, comb, 0, res);
-        return res;
-    }
+class Solution:
+    """
+    @param: : a string to be split
+    @return: all possible split string array
+    """
+    def splitString(self, s):
+        # write your code here
+        res = []
+        comb = []
     
-    void dfs(string& s, vector<string> comb, int startIdx, vector<vector<string>>& res) {
-        if (startIdx == s.length()) {
-            res.push_back(comb);
-            return;
-        }
+        if s == None or len(s) == 0:
+            res.append(comb)
+            return res
+            
+        self.dfs(s, comb.copy(), 0, res)
+        return res
         
-        for (int i = startIdx; i < startIdx + 2 && i < s.length(); ++i) {
-            comb.push_back(s.substr(startIdx, i - startIdx + 1));
-            dfs(s, comb, i + 1, res);
-            comb.pop_back();
-        }
-    }
-};
+    def dfs(self, s, comb, startIdx, res):
+        if startIdx == len(s):
+            res.append(comb)
+            return
+        
+        for i in range(startIdx, len(s)):
+            if i >= startIdx + 2:
+                break
+            
+            comb.append(s[startIdx:i+1])
+            self.dfs(s, comb.copy(), i + 1, res)
+            comb.pop()
