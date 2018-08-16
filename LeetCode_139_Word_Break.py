@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 '''
+139. Word Break (LeetCode)
 Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
 
 Note:
@@ -59,7 +60,7 @@ class Solution:
                 continue
             
             left = self.helper(s[:i], wordDict, minLen)    
-            
+
             if left:    
                 self.memo[s] = True
                 return True    
