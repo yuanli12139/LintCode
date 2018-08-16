@@ -23,9 +23,6 @@ class Solution:
     """
     def wordBreak(self, s, dict):
         # write your code here
-        if not s:
-            return True
-            
         dp = [False] * (len(s) + 1)
         
         dp[0] = True
