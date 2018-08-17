@@ -19,6 +19,9 @@ queries = [ ["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"] ].
 
 The input is always valid. You may assume that evaluating the queries will result in no division by zero and there is no contradiction.
 
+Reference:
+https://zxi.mytechroad.com/blog/graph/leetcode-399-evaluate-division/
+
 
 Author: Yuan Li
 Date: 8/16/2018 
