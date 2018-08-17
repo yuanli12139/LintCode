@@ -34,7 +34,6 @@ class Solution:
             
         start, end = 0, len(A) - 1
         while start + 1 < end:
-            print(A[start:end+1])
             mid = (start + end) // 2
             if A[mid] == target:
                 return True
