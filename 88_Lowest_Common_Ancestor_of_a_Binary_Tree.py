@@ -54,13 +54,17 @@ class Solution:
         right = self.lowestCommonAncestor(root.right, A, B)
         
         # conquer
+        # found A and B in two subtrees, respectively
         if left and right:
             return root
             
+        # found A and B in left subtree (since 2 nodes must exist)
         if left:
             return left
             
+        # found A and B in right subtree (since 2 nodes must exist)
         if right:
             return right
             
+        # found nothing
         return None
