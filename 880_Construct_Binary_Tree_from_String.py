@@ -21,6 +21,9 @@ Notice
 There will only be '(', ')', '-' and '0' ~ '9' in the input string.
 An empty tree is represented by "" instead of "()".
 
+Reference
+http://bookshadow.com/weblog/2017/03/12/leetcode-construct-binary-tree-from-string/
+
 
 Author: Yuan Li
 Date: 8/16/2018 
