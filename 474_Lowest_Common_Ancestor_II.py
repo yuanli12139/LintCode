@@ -58,11 +58,12 @@ class Solution:
    
         lca = root
         while A_to_root and B_to_root:
-            if A_to_root[-1] == B_to_root[-1]:
-                lca = A_to_root[-1]
+            if A_to_root[-1] != B_to_root[-1]:
+                break
+            
+            lca = A_to_root[-1]
                 
             A_to_root.pop()
             B_to_root.pop()
             
         return lca
-            
