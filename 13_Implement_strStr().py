@@ -33,12 +33,12 @@ class Solution:
     """
     def strStr(self, source, target):
         # write your code here
-        if source == None or target == None:
+        if source == None or target == None or len(source) < len(target):
             return -1
 
-        elif len(source) >= len(target):
-            for i in range(len(source)-len(target)+1):
-                sub_s = source[i:i+len(target)]
-                if sub_s == target:
-                    return i
-        return -1 
+        for i in range(len(source) - len(target) + 1):
+            sub_s = source[i:i+len(target)]
+            if sub_s == target:
+                return i
+                    
+        return -1        
