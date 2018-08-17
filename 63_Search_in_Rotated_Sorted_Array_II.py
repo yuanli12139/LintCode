@@ -43,9 +43,9 @@ class Solution:
                 start += 1
                 continue
             
-            # if A[end] == A[mid]:
-            #     end -= 1
-            #     continue
+            if A[end] == A[mid]:
+                end = mid
+                continue
             
             if A[start] < A[mid]:
                 if A[start] <= target <= A[mid]:
