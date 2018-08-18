@@ -7,6 +7,9 @@ Given an integer n, return the number of trailing zeroes in n!.
 Notice
 Your solution should be in logarithmic time complexity.
 
+Reference
+https://blog.csdn.net/qq_34861102/article/details/80820501
+
 
 Author: Yuan Li
 Date: 8/16/2018 
