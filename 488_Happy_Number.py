@@ -35,11 +35,11 @@ class Solution:
                 return False
                 
             seen.add(n)
-            n = self.getNextHappy(n)
+            n = self.nextSum(n)
         
         return True
             
-    def getNextHappy(self, n):
+    def nextSum(self, n):
         s = 0
         while n != 0:
             s += (n % 10)**2
