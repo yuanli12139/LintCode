@@ -12,10 +12,14 @@ Clarification
 Should the characters in minimum window has the same order in target?
 
 Not necessary.
+
 Notice
 If there is no such window in source that covers all characters in target, return the emtpy string "".
 If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in source.
 The target string may contain duplicate characters, the minimum window should cover all characters including the duplicate characters in target.
+
+Reference
+https://www.youtube.com/watch?v=dzdtzymjM7A
 
 
 Author: Yuan Li
