@@ -41,7 +41,7 @@ class Solution:
                     
                 rowSet[r].add(board[r][c])
                 colSet[c].add(board[r][c])
-                blkSet[r/3*3+c/3].add(board[r][c])
+                blkSet[r//3*3+c//3].add(board[r][c])
 
         self.dfs(board, toFill, 0, rowSet, colSet, blkSet)
                 
@@ -52,11 +52,11 @@ class Solution:
         r, c = toFill[startIdx]
         
         for num in range(1, 10):
-            if (num not in rowSet[r]) and (num not in colSet[c]) and (num not in blkSet[r/3*3+c/3]):
+            if (num not in rowSet[r]) and (num not in colSet[c]) and (num not in blkSet[r//3*3+c//3]):
                 board[r][c] = num
                 rowSet[r].add(num)
                 colSet[c].add(num)
-                blkSet[r/3*3+c/3].add(num)
+                blkSet[r//3*3+c//3].add(num)
                 
                 isSolved = self.dfs(board, toFill, startIdx + 1, rowSet, colSet, blkSet)
                 
@@ -66,6 +66,6 @@ class Solution:
                 board[r][c] = 0
                 rowSet[r].remove(num)
                 colSet[c].remove(num)
-                blkSet[r/3*3+c/3].remove(num)
+                blkSet[r//3*3+c//3].remove(num)
                 
         return False
