@@ -69,12 +69,10 @@ public:
                 }
                 
                 // update count when i moves on
-                char left_most = source[i]; 
+                char left_most = source[i++]; 
                 if (tChar_cnt.count(left_most) && ++tChar_cnt[left_most] > 0) {
                     ++remain;
                 }
-                
-                ++i;
             }
         }
 
