@@ -36,6 +36,10 @@ public:
      */
     string minWindow(string &source, string &target) {
         // write your code here
+        if (source.length() < target.length()) {
+            return "";
+        }
+        
         unordered_map<char, int> tChar_cnt;
         for (char c : target) {
             if (tChar_cnt.count(c)) {
@@ -50,7 +54,8 @@ public:
         int min_len = INT_MAX;
         for (int i = 0, j = 0; j < source.length(); ++j) {
             // move j to include all target chars
-            if (tChar_cnt.count(source[j]) && tChar_cnt[source[j]]-- > 0) {
+            char ch = source[j];
+            if (tChar_cnt.count(ch) && tChar_cnt[ch]-- > 0) {
                 --remain;
             }
             
@@ -63,7 +68,8 @@ public:
                 }
                 
                 // update count when i moves on
-                if (tChar_cnt.count(source[i]) && ++tChar_cnt[source[i]] > 0) {
+                char left_most = source[i]; 
+                if (tChar_cnt.count(left_most) && ++tChar_cnt[left_most] > 0) {
                     ++remain;
                 }
                 
