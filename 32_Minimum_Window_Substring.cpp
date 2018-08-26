@@ -20,6 +20,7 @@ The target string may contain duplicate characters, the minimum window should co
 
 Reference
 https://www.youtube.com/watch?v=dzdtzymjM7A
+https://www.youtube.com/watch?v=9qFR2WQGqkU
 
 
 Author: Yuan Li
