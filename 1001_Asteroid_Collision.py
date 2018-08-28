@@ -55,7 +55,7 @@ class Solution:
                     stk.append(top)
                     break
             
-            if len(stk) == 0 or abs(top) < abs(asteroid):  
+            if abs(top) < abs(asteroid):  
                 stk.append(asteroid)
              
         return stk
