@@ -104,3 +104,63 @@ class Solution {
         int start, end, height; 
     };
 };
+
+
+// map - O(n * log(n)) or worst: O(n^2)?
+class Solution {
+  public:
+    /**
+     * @param positions: a list of (left, side_length)
+     * @return: return a list of integer
+     */
+    vector<int> fallingSquares(vector<vector<int>> &positions) {
+        // write your code here
+        vector<int> res;
+        
+        int max_height = 0;
+        for (auto &pos : positions) {
+            int start = pos[0], end = start + pos[1];
+            int base_height = 0;
+            
+            // find intersection
+            auto it = intv_h_.upper_bound({start, end});
+            auto tmp_it = it;
+            if (tmp_it != intv_h_.begin() && (--tmp_it)->first.second > start) {
+                it = tmp_it; 
+            }
+        
+            vector<tuple<int, int, int>> ranges; // new ranges ({start, end, height}) after removing overlaps
+            while (it != intv_h_.end() && it->first.first < end) {
+                int it_start = it->first.first;
+                int it_end = it->first.second;
+                int it_height = it->second; 
+                
+                if (it_start < start) { // left overlapped
+                    ranges.emplace_back(it_start, start, it_height);
+                }
+                
+                if (it_end > end) { // right overlapped
+                    ranges.emplace_back(end, it_end, it_height);
+                }
+                
+                base_height = max(base_height, it_height);
+                it = intv_h_.erase(it); // erase it, making it become its next - O(1)
+            }
+
+            // add new / adjusted intervals
+            int new_height = base_height + pos[1];
+            intv_h_[{start, end}] = new_height;  
+            for (auto &range : ranges) {
+                intv_h_[{get<0>(range), get<1>(range)}] = get<2>(range);
+            }
+            
+            max_height = max(max_height, new_height);
+            res.push_back(max_height);
+        }
+
+        return res;
+    }
+
+  private:
+    map<pair<int, int>, int> intv_h_; // {{start, end}, height}, sorted in ascending order by start
+};
