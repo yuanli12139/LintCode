@@ -71,6 +71,7 @@ class Solution {
 };
 
 
+// using start index to get rid of substr() call
 // time: O(n)
 // space: O(n)
 class Solution {
