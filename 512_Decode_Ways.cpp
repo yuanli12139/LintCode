@@ -119,3 +119,59 @@ class Solution {
   private:
     unordered_map<int, int> str_ways_;
 };
+
+
+// dynamic programming
+// time: O(n)
+// space: O(1)
+class Solution {
+  public:
+    /**
+     * @param s: a string,  encoded message
+     * @return: an integer, the number of ways decoding
+     */
+    int numDecodings(string &s) {
+        // write your code here
+        if (s.empty() || s[0] == '0') {
+            return 0;
+        }
+        
+        if (s.length() == 1) {
+            return 1;
+        }
+        
+        // initialize for ""
+        int dp1 = 1; // dp[i-1]
+        int dp2 = 1; // dp[i-2]
+        
+        for (int i = 1; i < s.length(); ++i) {
+            int dp = 0;
+            if (!isValid(s[i]) && !isValid(s[i-1], s[i])) {
+                return 0;
+            }
+            
+            if (isValid(s[i])) {
+                dp += dp1;
+            }
+            
+            if (isValid(s[i-1], s[i])) {
+                dp += dp2;
+            }
+            
+            dp2 = dp1;
+            dp1 = dp;
+        }
+        
+        return dp1;
+    }
+    
+  private:
+    bool isValid(const char c) {
+        return c != '0';
+    }
+    
+    bool isValid(const char c1, const char c) {
+        int n = (c1 - '0') * 10 + (c - '0');
+        return n >= 10 && n <= 26;
+    }
+};
