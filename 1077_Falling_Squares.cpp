@@ -86,9 +86,9 @@ class Solution {
                 base_height = max(base_height, intv.height);
             }
             
-            int height = base_height + pos[1];
-            intervals.push_back(Interval(start, end, height));
-            max_height = max(max_height, height);
+            int new_height = base_height + pos[1];
+            intervals.push_back(Interval(start, end, new_height));
+            max_height = max(max_height, new_height);
             
             res.push_back(max_height);
         }
