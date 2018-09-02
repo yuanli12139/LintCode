@@ -30,6 +30,8 @@ Date: 9/1/2018
 Difficulty: Medium
 '''
 
+# time: O(l)
+# space: O(prefixes) = O(n * l^2)
 class Trie:
     
     def __init__(self):
