@@ -123,7 +123,7 @@ class Solution {
             int base_height = 0;
             
             // find intersection
-            auto it = intv_h_.upper_bound({start, end});
+            auto it = intv_h_.upper_bound({start, end}); // O(log(n))
             auto tmp_it = it;
             if (tmp_it != intv_h_.begin() && (--tmp_it)->first.second > start) {
                 it = tmp_it; 
