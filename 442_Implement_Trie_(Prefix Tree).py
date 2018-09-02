@@ -21,6 +21,9 @@ startsWith("linterror")
 Notice
 You may assume that all inputs are consist of lowercase letters a-z.
 
+Reference
+https://zxi.mytechroad.com/blog/data-structure/leetcode-208-implement-trie-prefix-tree/
+
 
 Author: Yuan Li
 Date: 9/1/2018 
