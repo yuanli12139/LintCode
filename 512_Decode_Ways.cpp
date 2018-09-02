@@ -55,7 +55,7 @@ class Solution {
         }
         
         // remove the 1st character
-        int n = helper(s.substr(1)); //substr() is O(n)
+        int n = helper(s.substr(1)); //string::substr() is O(n)
         
         // remove the 1st 2 characters
         if (stoi(s.substr(0, 2)) <= 26) {
