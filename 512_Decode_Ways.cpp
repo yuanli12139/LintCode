@@ -12,6 +12,9 @@ Example
 Given encoded message 12, it could be decoded as AB (1 2) or L (12).
 The number of ways decoding 12 is 2.
 
+Reference
+https://zxi.mytechroad.com/blog/dynamic-programming/leetcode-91-decode-ways/
+
 
 Author: Yuan Li
 Date: 9/1/2018 
