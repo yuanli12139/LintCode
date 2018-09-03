@@ -147,7 +147,7 @@ class Solution {
                 it = intv_h_.erase(it); // erase it, making it become its next - O(1)
             }
 
-            // add new / adjusted intervals
+            // add new/adjusted intervals
             int new_height = base_height + pos[1];
             intv_h_[{start, end}] = new_height;  
             for (auto &range : ranges) {
