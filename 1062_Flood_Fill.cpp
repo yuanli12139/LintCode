@@ -41,7 +41,6 @@ class Solution {
      */
     vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int newColor) {
         // Write your code here
-        // unordered_set<pair<int, int>> visited_; // unordered_set can't take pair as the key
         visited_.resize(image.size(), vector<bool>(image[0].size(), false));
         
         vector<int> dr = {-1, 1, 0, 0};
@@ -72,6 +71,7 @@ class Solution {
     }
     
   private:
+    // unordered_set<pair<int, int>> visited_; // unordered_set can't take pair as the key
     vector<vector<bool>> visited_;
     
   private:
