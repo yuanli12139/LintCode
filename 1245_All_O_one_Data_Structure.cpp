@@ -10,6 +10,9 @@ GetMinKey() - Returns one of the keys with minimal value. If no element exists, 
 Challenge
 Perform all these in O(1) time complexity.
 
+Reference
+https://zxi.mytechroad.com/blog/data-structure/leetcode-432-all-oone-data-structure/
+
 
 Author: Yuan Li
 Date: 9/3/2018 
