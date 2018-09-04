@@ -30,6 +30,10 @@ class Solution {
      */
     bool anagram(string &s, string &t) {
         // write your code here
+        if (s.size() != t.size()) {
+            return false;
+        }
+        
         unordered_map<char, int> ch_cnt; // O(len(ascii)) = O(1)
         for (char c : s) {
             ch_cnt[c] = ch_cnt.count(c) ? ch_cnt[c] + 1 : 1;
