@@ -38,7 +38,7 @@ Difficulty: Medium
 */
 
 class Solution {
-public:
+  public:
     /**
      * @param n: 
      * @param nums: 
