@@ -1,2 +1,2 @@
 # LintCode
-Keep track of LintCode/LeetCode exercises
+C++ / Python solutions for LintCode/LeetCode problems
