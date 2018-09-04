@@ -32,7 +32,6 @@ minimum AND sum: In n numbers, take a number of numbers(cannot take nothing), Th
 1 <= n <= 1000000，0 <= nums[i] <= 2^32 - 1.
 
 
-
 Author: Yuan Li
 Date: 9/3/2018 
 Difficulty: Medium
