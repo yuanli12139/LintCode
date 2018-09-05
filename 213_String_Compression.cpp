@@ -13,7 +13,7 @@ str=aaaa return a4
 
 
 Author: Yuan Li
-Date: 9/3/2018 
+Date: 9/4/2018 
 Difficulty: Easy
 */
 
