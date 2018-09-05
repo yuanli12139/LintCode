@@ -14,7 +14,7 @@ str=aaaa return a4
 
 Author: Yuan Li
 Date: 9/3/2018 
-Difficulty: Hard
+Difficulty: Easy
 */
 
 class Solution {
