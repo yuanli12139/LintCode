@@ -18,6 +18,9 @@ The given list may contain duplicates, so ascending order means >= here.
 1 <= k <= 3500
 -105 <= value of elements <= 105.
 
+Reference
+https://www.youtube.com/watch?time_continue=17&v=csJXQZFYklE
+
 
 Author: Yuan Li
 Date: 9/4/2018 
