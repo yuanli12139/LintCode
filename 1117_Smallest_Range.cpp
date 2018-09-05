@@ -16,7 +16,7 @@ Notice
 the range [a,b] is smaller than range [c,d] if b-a < d-c or a < c if b-a == d-c.
 The given list may contain duplicates, so ascending order means >= here.
 1 <= k <= 3500
--105 <= value of elements <= 105.
+-10^5 <= value of elements <= 10^5.
 
 Reference
 https://www.youtube.com/watch?time_continue=17&v=csJXQZFYklE
