@@ -1,2 +1,2 @@
 # LintCode
-C++ / Python solutions for LintCode/LeetCode problems
+C++ / Python solutions for LintCode / LeetCode problems
