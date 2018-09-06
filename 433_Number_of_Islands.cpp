@@ -23,7 +23,7 @@ Difficulty: Easy
 */
 
 class Solution {
-public:
+  public:
     /**
      * @param grid: a boolean 2D matrix
      * @return: an integer
@@ -40,7 +40,7 @@ public:
                 }
             }
         }
-        
+
         return islands;
     }
     
@@ -50,20 +50,18 @@ public:
         
         queue<pair<int, int>> islandQueue;
         islandQueue.push(pair<int, int> (r, c));
-
+        
         while (!islandQueue.empty()) {
-            for (int i = 0; i < islandQueue.size(); i++) {
-                pair<int, int> curr = islandQueue.front();
-                islandQueue.pop();
-            
-                for (int d = 0; d < 4; d++) {
-                    int next_r = curr.first + dr[d];
-                    int next_c = curr.second + dc[d];
-
-                    if (isValid(grid, next_r, next_c)) {
-                        grid[next_r][next_c] = false;
-                        islandQueue.push(pair<int, int> (next_r, next_c));
-                    }
+            pair<int, int> curr = islandQueue.front();
+            islandQueue.pop();
+        
+            for (int d = 0; d < 4; d++) {
+                int next_r = curr.first + dr[d];
+                int next_c = curr.second + dc[d];
+                
+                if (isValid(grid, next_r, next_c)) {
+                    grid[next_r][next_c] = false;
+                    islandQueue.push(pair<int, int> (next_r, next_c));
                 }
             }
         }
