@@ -39,7 +39,7 @@ class Solution {
         vector<int> pos(nums.size(), 0);
         
         auto comp = [](const pair<int, int> &lhs, const pair<int, int> &rhs) -> bool {
-        return lhs.first > rhs.first;
+            return lhs.first > rhs.first;
         };
         priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(comp)> min_pq(comp);
         
