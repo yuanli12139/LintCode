@@ -44,24 +44,26 @@ class Solution {
         return islands;
     }
     
+  private:
+    vector<int> dr_ = {-1, 1, 0, 0};
+    vector<int> dc_ = {0, 0, -1, 1};
+    queue<pair<int, int>> q_;
+    
+  private:
     void BFSVisit(vector<vector<bool>> &grid, int r, int c) {
-        vector<int> dr = {-1, 1, 0, 0};
-        vector<int> dc = {0, 0, -1, 1};
+        q_.push(pair<int, int> (r, c));
         
-        queue<pair<int, int>> islandQueue;
-        islandQueue.push(pair<int, int> (r, c));
-        
-        while (!islandQueue.empty()) {
-            pair<int, int> curr = islandQueue.front();
-            islandQueue.pop();
+        while (!q_.empty()) {
+            pair<int, int> curr = q_.front();
+            q_.pop();
         
             for (int d = 0; d < 4; d++) {
-                int next_r = curr.first + dr[d];
-                int next_c = curr.second + dc[d];
+                int next_r = curr.first + dr_[d];
+                int next_c = curr.second + dc_[d];
                 
                 if (isValid(grid, next_r, next_c)) {
                     grid[next_r][next_c] = false;
-                    islandQueue.push(pair<int, int> (next_r, next_c));
+                    q_.push(pair<int, int> (next_r, next_c));
                 }
             }
         }
