@@ -18,7 +18,7 @@ Difficulty: Medium
 */
 
 class Solution {
-public:
+  public:
     /**
      * @param nums: an array of integers
      * @return: the product of all the elements of nums except nums[i].
