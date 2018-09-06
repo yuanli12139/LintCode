@@ -43,8 +43,13 @@ public:
             lower = num + 1;
         }
         
+        if (lower > upper) { 
+            return res;
+        }
+        
         // handle int overflow
-        if (lower > upper || (!nums.empty() && lower == INT_MIN)) {
+        // if nums is not empty, meaning lower can't initially be INT_MIN
+        if (!nums.empty() && lower == INT_MIN) { 
             return res;
         }
         
