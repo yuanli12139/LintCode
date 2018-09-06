@@ -35,7 +35,7 @@ class Solution {
             for (int c = 0; c < grid[0].size(); c++) {
                 if (grid[r][c]) {
                     grid[r][c] = false;
-                    BFSVisit(grid, r, c);
+                    bfs(grid, r, c);
                     islands++;
                 }
             }
@@ -50,7 +50,7 @@ class Solution {
     queue<pair<int, int>> q_;
     
   private:
-    void BFSVisit(vector<vector<bool>> &grid, int r, int c) {
+    void bfs(vector<vector<bool>> &grid, int r, int c) {
         q_.push(pair<int, int> (r, c));
         
         while (!q_.empty()) {
