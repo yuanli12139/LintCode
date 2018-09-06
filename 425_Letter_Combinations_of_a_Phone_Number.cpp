@@ -21,11 +21,22 @@ Difficulty: Medium
 */
 
 class Solution {
-public:
+  public:
     /**
      * @param digits: A digital string
      * @return: all posible letter combinations
      */
+    Solution () {
+        digit_letters_['2'] = "abc";
+        digit_letters_['3'] = "def";
+        digit_letters_['4'] = "ghi";
+        digit_letters_['5'] = "jkl";
+        digit_letters_['6'] = "mno";
+        digit_letters_['7'] = "pqrs";
+        digit_letters_['8'] = "tuv";
+        digit_letters_['9'] = "wxyz";
+    } 
+     
     vector<string> letterCombinations(string &digits) {
         // write your code here
         vector<string> res;
@@ -33,34 +44,27 @@ public:
             return res;
         }
         
-        unordered_map<char, string> digit2letters;
-        digit2letters['2'] = "abc";
-        digit2letters['3'] = "def";
-        digit2letters['4'] = "ghi";
-        digit2letters['5'] = "jkl";
-        digit2letters['6'] = "mno";
-        digit2letters['7'] = "pqrs";
-        digit2letters['8'] = "tuv";
-        digit2letters['9'] = "wxyz";
-        
         string comb;
-        dfs(digits, comb, digit2letters, res);
+        dfs(digits, comb, res);
         
         return res;
     }
     
-    void dfs(string &digits, string comb, 
-            unordered_map<char, string> &digit2letters, vector<string> &res) {
+  private:
+    unordered_map<char, string> digit_letters_;
+        
+  private:
+    void dfs(string &digits, string comb, vector<string> &res) {
         if (comb.length() == digits.length()) {
             res.push_back(comb);
             return;
         }
         
         char digit = digits[comb.size()];
-        for (char c : digit2letters[digit]) {
+        for (char c : digit_letters_[digit]) {
             // comb += c;
             comb.push_back(c);
-            dfs(digits, comb, digit2letters, res);
+            dfs(digits, comb, res);
             comb.pop_back();
         }
     }
