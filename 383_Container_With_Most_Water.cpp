@@ -15,7 +15,7 @@ Difficulty: Medium
 */
 
 class Solution {
-public:
+  public:
     /**
      * @param heights: a vector of integers
      * @return: an integer

@@ -13,7 +13,7 @@ Difficulty: Medium
 */
 
 class Solution {
-public:
+  public:
     /*
      * @param nums: a sorted integer array
      * @param lower: An integer
