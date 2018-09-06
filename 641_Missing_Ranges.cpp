@@ -25,8 +25,9 @@ public:
         vector<string> res;
         
         for (int i = 0; i < nums.size(); ++i) {
-            // handle duplicates
             int num = nums[i]; 
+            
+            // handle duplicates
             if (i > 0 && num == nums[i-1]) {
                 continue;
             }
@@ -43,7 +44,7 @@ public:
         }
         
         // handle int overflow
-        if (lower > upper || (lower == INT_MIN && !nums.empty())) {
+        if (lower > upper || (!nums.empty() && lower == INT_MIN)) {
             return res;
         }
         
