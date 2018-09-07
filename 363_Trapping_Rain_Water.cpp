@@ -37,16 +37,14 @@ public:
         
         while (left < right) {
             if (heights[left] < heights[right]) {
-                ++left;
-                if (heights[left] < left_h) {
+                if (heights[++left] < left_h) {
                     water += left_h - heights[left];
                 } else {
                     left_h = heights[left];
                 }
                 
             } else {
-                --right;
-                if (heights[right] < right_h) {
+                if (heights[--right] < right_h) {
                     water += right_h - heights[right];
                 } else {
                     right_h = heights[right];
