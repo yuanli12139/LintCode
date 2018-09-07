@@ -12,7 +12,7 @@ Difficulty: Hard
 */
 
 class LRUCache {
-public:
+  public:
     /*
     * @param capacity: An integer
     */
@@ -73,6 +73,13 @@ public:
         }
     }
     
+  private:
+    int capacity;
+    unordered_map<int, LinkedNode*> hash; // key -> pointer to its previous node
+    LinkedNode* head;
+    LinkedNode* tail;
+    
+  private:
     void pop_front() {
         hash.erase(head->next->key);
         head->next = head->next->next;
@@ -99,10 +106,4 @@ public:
         node->next = nullptr; 
         push_back(node);
     }
-    
-private:
-    int capacity;
-    unordered_map<int, LinkedNode*> hash; // key -> pointer to its previous node
-    LinkedNode* head;
-    LinkedNode* tail;
 };
