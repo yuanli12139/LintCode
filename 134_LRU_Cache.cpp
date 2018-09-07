@@ -23,20 +23,20 @@ class LRUCache {
         tail = head;
     }
 
-    // nested class
-    class LinkedNode {
-    public:
-        int key; 
-        int value;
-        LinkedNode* next;
+    // // nested class
+    // class LinkedNode {
+    // public:
+    //     int key; 
+    //     int value;
+    //     LinkedNode* next;
         
-        // constructor
-        LinkedNode(int key = 0, int value = 0) {
-            this->key = key;
-            this->value = value;
-            next = nullptr;
-        }
-    };
+    //     // constructor
+    //     LinkedNode(int key = 0, int value = 0) {
+    //         this->key = key;
+    //         this->value = value;
+    //         next = nullptr;
+    //     }
+    // };
 
     /*
      * @param key: An integer
@@ -74,6 +74,20 @@ class LRUCache {
     }
     
   private:
+    class LinkedNode {
+    public:
+        int key; 
+        int value;
+        LinkedNode* next;
+        
+        // constructor
+        LinkedNode(int key = 0, int value = 0) {
+            this->key = key;
+            this->value = value;
+            next = nullptr;
+        }
+    };
+  
     int capacity;
     unordered_map<int, LinkedNode*> hash; // key -> pointer to its previous node
     LinkedNode* head;
