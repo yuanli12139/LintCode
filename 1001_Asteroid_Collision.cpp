@@ -30,7 +30,7 @@ Difficulty: Medium
 */
 
 class Solution {
-public:
+  public:
     /**
      * @param asteroids: a list of integers
      * @return: return a list of integers
