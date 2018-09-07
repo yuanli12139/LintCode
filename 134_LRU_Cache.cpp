@@ -63,13 +63,13 @@ class LRUCache {
             move_back(hash[key]);
             hash[key]->next->value = value;
         } else {
+            if (hash.size() == capacity) {
+                pop_front();
+            }
+            
             LinkedNode* new_node = new LinkedNode(key, value);
             push_back(new_node);
             // push_back(new LinkedNode(key, value)); // potentially bad practice as new can't be deleted
-            
-            if (hash.size() > capacity) {
-                pop_front();
-            }
         }
     }
     
@@ -97,7 +97,9 @@ class LRUCache {
     void pop_front() {
         hash.erase(head->next->key);
         head->next = head->next->next;
-        hash[head->next->key] = head;
+        if (head->next) { // for capacity == 1
+            hash[head->next->key] = head;
+        }
     }
     
     void push_back(LinkedNode* node) {
