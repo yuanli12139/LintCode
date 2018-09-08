@@ -241,7 +241,7 @@ class Solution {
             return min(A[start_A], B[start_B]);
         }
         
-        // ignore smaller numbers
+        // weed out k / 2 smaller numbers
         int A_halfKth = start_A + k / 2 - 1 < A.size() ? A[start_A + k / 2 - 1] : INT_MAX;
         int B_halfKth = start_B + k / 2 - 1 < B.size() ? B[start_B + k / 2 - 1] : INT_MAX;
         
