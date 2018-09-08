@@ -19,7 +19,7 @@ Difficulty: Hard
 // binary search - O(log(range) * (log(m) + log(n)))
 // range: range between the min and the max integer, i.e. max(max(A), max(B)) - min(min(A), min(B)) + 1
 class Solution {
-public:
+  public:
     /*
      * @param A: An integer array
      * @param B: An integer array
@@ -94,14 +94,14 @@ public:
 
 // exclusion - O(log(m + n))
 class Solution {
-public:
+  public:
     /*
      * @param A: An integer array
      * @param B: An integer array
      * @return: a double whose format is *.5 or *.0
      */
     class PartialArr {
-    public:
+      public:
         PartialArr(const vector<int> &arr) {
             arr_ = arr;
             start_ = 0;
@@ -152,7 +152,7 @@ public:
             return size() == 0;
         }
         
-    private:
+      private:
         vector<int> arr_;
         int start_, end_;
     };
@@ -211,7 +211,7 @@ public:
 
 // divide & conquer - O(log(m + n))
 class Solution {
-public:
+  public:
     /*
      * @param A: An integer array
      * @param B: An integer array
