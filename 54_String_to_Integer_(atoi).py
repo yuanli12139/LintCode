@@ -82,7 +82,7 @@ class Solution:
         if not str:
             return res
         
-        str = str.strip()
+        str = str.lstrip()
         
         sign = 1
         start = 0
