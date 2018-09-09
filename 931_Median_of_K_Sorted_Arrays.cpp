@@ -18,7 +18,7 @@ Difficulty: Medium
 // binary search - O(log(range) * klog(n)) = O(32klog(n))
 // range: range between the min and the max integer, i.e. INT_MAX - 1 + 1
 class Solution {
-public:
+  public:
     /**
      * @param nums: the given k sorted arrays
      * @return: the median of the given k sorted arrays
@@ -41,6 +41,7 @@ public:
         return findKth(nums, n / 2 + 1);
     }
     
+  private:
     // binary search for the median value
     double findKth(const vector<vector<int>> &nums, int k) {
         int start = 1, end = INT_MAX;
