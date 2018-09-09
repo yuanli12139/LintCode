@@ -51,7 +51,7 @@ class Solution {
             return sIdx == s.length();
             
         if (sIdx == s.length())
-            // must be _*_*_* pattern
+            // must be _*_*_* pattern so that * matches zero preceding elements
             return isEmpty(p, pIdx);
             
         if (visited_[sIdx][pIdx]) 
