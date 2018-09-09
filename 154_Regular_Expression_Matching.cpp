@@ -77,8 +77,12 @@ class Solution {
     }
     
     bool isEmpty(string &p, int pIdx) {
-        for (int i = pIdx; i < p.length(); i += 2) {
-            if (i == p.length() - 1 || p[i+1] != '*') {
+        if (p.length() % 2) {
+            return false;
+        }
+        
+        for (int i = pIdx + 1; i < p.length(); i += 2) {
+            if (p[i] != '*') {
                 return false;
             }
         }
