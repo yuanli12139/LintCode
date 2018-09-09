@@ -27,6 +27,11 @@ class Solution {
         // write your code here
         int n = 0;
         for (auto &arr : nums) {
+            if (!arr.empty()) {
+                min_val_ = min(min_val_, arr[0]);
+                max_val_ = max(max_val_, arr.back());
+            }
+            
             n += arr.size();
         }
         
@@ -42,9 +47,13 @@ class Solution {
     }
     
   private:
+    int min_val_ = 1;
+    int max_val_ = INT_MAX;
+    
+  private:
     // binary search for the median value
     double findKth(const vector<vector<int>> &nums, int k) {
-        int start = 1, end = INT_MAX;
+        int start = min_val_, end = max_val_;
         while (start + 1 < end) {
             int mid = start + (end - start) / 2;
             if (countLTE(nums, mid) < k) {
@@ -71,7 +80,7 @@ class Solution {
         return res;
     }
     
-    // binary search for the position, i.e. number of elements ≤ val
+    // binary search for the position, i.e. number of elements â‰¤ val
     int countLTE(const vector<int> &arr, int val) {
         if (arr.empty()) {
             return 0;
