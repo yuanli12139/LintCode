@@ -18,7 +18,7 @@ Difficulty: Hard
 */
 
 class Solution {
-public:
+  public:
     /**
      * @param pattern: a string,denote pattern string
      * @param str: a string, denote matching string
@@ -26,52 +26,53 @@ public:
      */
     bool wordPatternMatch(string &pattern, string &str) {
         // write your code here
-        unordered_map<char, string> pattern2str;
-        unordered_set<string> mapped;
-        
-        return dfsMatch(pattern, str, pattern2str, mapped);
+        return dfs(pattern, str);
     }
-    
-    bool dfsMatch(string &pattern, string &str, 
-            unordered_map<char, string> pattern2str,
-            unordered_set<string> mapped) {
-            if (pattern.length() == 0) {
-                return str.length() == 0;
-            }        
-            
-            char p = pattern[0];
-            if (pattern2str.count(p)) {
-                string match = pattern2str[p];
-                if (!startsWith(str, match)) {
-                    return false;
-                }
-                
-                string remainPattern = pattern.substr(1);
-                string remainStr = str.substr(match.length());
-                return dfsMatch(remainPattern, remainStr, pattern2str, mapped);
+  
+  private:
+    unordered_map<char, string> pattern2str_;
+    unordered_set<string> mapped_;
+  
+  private:
+    bool dfs(string &pattern, string &str) {
+        if (pattern.length() == 0) {
+            return str.length() == 0;
+        }        
+        
+        char p = pattern[0];
+        if (pattern2str_.count(p)) {
+            string match = pattern2str_[p];
+            if (!startsWith(str, match)) {
+                return false;
             }
             
-            for (int i = 0; i < str.length(); ++i) {
-                string s = str.substr(0, i+1); 
-                if (mapped.count(s)) {
-                    continue;
-                }
-                
-                pattern2str[p] = s;
-                mapped.insert(s);
-                
-                string remainPattern = pattern.substr(1);
-                string remainStr = str.substr(i+1);
-                if (dfsMatch(remainPattern, remainStr, pattern2str, mapped)) {
-                    return true;                
-                }
-                
-                pattern2str.erase(p);
-                mapped.erase(s);
-            }
+            string remainPattern = pattern.substr(1);
+            string remainStr = str.substr(match.length());
             
-            return false;
+            return dfs(remainPattern, remainStr);
         }
+        
+        for (int i = 0; i < str.length(); ++i) {
+            string s = str.substr(0, i+1); 
+            if (mapped_.count(s)) {
+                continue;
+            }
+            
+            pattern2str_[p] = s;
+            mapped_.insert(s);
+            
+            string remainPattern = pattern.substr(1);
+            string remainStr = str.substr(i+1);
+            if (dfs(remainPattern, remainStr)) {
+                return true;                
+            }
+            
+            pattern2str_.erase(p);
+            mapped_.erase(s);
+        }
+        
+        return false;
+    }
         
     bool startsWith(string &str, string &match) {
         if (str.length() < str.length()) {
