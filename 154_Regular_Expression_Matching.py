@@ -1,22 +1,30 @@
 #!/usr/bin/python3
 
 '''
-54. String to Integer (atoi)
-Implement function atoi to convert a string to an integer.
+154. Regular Expression Matching
+Implement regular expression matching with support for '.' and '*'.
 
-If no valid conversion could be performed, a zero value is returned.
+'.' Matches any single character.
+'*' Matches zero or more of the preceding element.
+The matching should cover the entire input string (not partial).
 
-If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.
+
+The function prototype should be:
+
+bool isMatch(string s, string p)
 
 Example
-"10" => 10
-"-1" => -1
-"123123123123123" => 2147483647
-"1.0" => 1
+isMatch("aa","a") → false
+isMatch("aa","aa") → true
+isMatch("aaa","aa") → false
+isMatch("aa", "a*") → true
+isMatch("aa", ".*") → true
+isMatch("ab", ".*") → true
+isMatch("aab", "c*a*b") → true
 
 
 Author: Yuan Li
-Date: 8/7/2018 
+Date: 9/9/2018 
 Difficulty: Hard
 '''
 
