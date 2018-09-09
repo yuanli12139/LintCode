@@ -16,7 +16,7 @@ Difficulty: Medium
 */
 
 // binary search - O(log(range) * klog(n)) = O(32klog(n))
-// range: range between the min and the max integer, i.e. INT_MAX - 1 + 1
+// range: range between the min and the max integer, e.g. INT_MAX - 1 + 1
 class Solution {
   public:
     /**
@@ -87,17 +87,11 @@ class Solution {
         }
         
         int start = 0, end = arr.size() - 1;
-        while (start + 1 < end) {
-            int mid = start + (end - start) / 2;
-            if (arr[mid] == val) {
-                return mid + 1;
-            }
-            
-            if (arr[mid] < val) {
-                start = mid;
-            } else {
-                end = mid;
-            }
+        
+        // 2 3 4 5 6 <1>
+        if (arr[start] > val) {
+            return 0; // start == 0
+            // return start;
         }
         
         // 2 3 4 5 6 <8>
@@ -107,13 +101,16 @@ class Solution {
         }
         
         // 2 3 4 5 6 <3>
-        if (arr[start] <= val) {
-            return start + 1; // start + 1 == end;
-            // return end;
+        while (start + 1 < end) {
+            int mid = start + (end - start) / 2;
+            if (arr[mid] <= val) {
+                start = mid;
+            } else {
+                end = mid;
+            }
         }
         
-        // 2 3 4 5 6 <1>
-        return 0; // start == 0
-        // return start; 
+        return start + 1; // start + 1 == end
+        // return end;
     }
 };
