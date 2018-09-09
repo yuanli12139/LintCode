@@ -60,8 +60,8 @@ class Solution {
         visited_[sIdx][pIdx] = true;
         
         char sChar = s[sIdx], pChar = p[pIdx];
-        bool match;
         
+        bool match;
         // _*: can either match empty or a '_'
         if (pIdx + 1 < p.length() && p[pIdx+1] == '*') {
             match = dfs(s, sIdx, p, pIdx + 2) ||
