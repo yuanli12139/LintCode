@@ -16,7 +16,7 @@ Date: 7/28/2018
 Difficulty: Hard
 */
 
-// binary search - O(log(range) * (log(m) + log(n)))
+// binary search - O(log(range) * log(m) + log(n))
 // range: range between the min and the max integer, i.e. max(max(A), max(B)) - min(min(A), min(B)) + 1
 class Solution {
   public:
@@ -36,6 +36,7 @@ class Solution {
         return median(A, B, n / 2 + 1);
     }
     
+  private:
     int median(vector<int> &A, vector<int> &B, int k) {
         if (A.empty()) {
             return B[k-1];
@@ -66,6 +67,18 @@ class Solution {
     
     int countSmallerEqual(vector<int> arr, int num) {
         int start = 0, end = arr.size() - 1;
+        
+        // all numbers in arr > num, start == 0
+        if (arr[start] > num) {
+            // return start;
+            return 0;
+        }
+        
+        // all numbers in arr < num or arr[end] == num, return the number of numbers in arr
+        if (arr[end] <= num) {
+            return arr.size();
+        }
+        
         while (start + 1 < end) {
             int mid = start + (end - start) / 2;
             if (arr[mid] <= num) {
@@ -75,19 +88,8 @@ class Solution {
             }
         }
         
-        // all numbers in arr > num, start == 0
-        if (arr[start] > num) {
-            // return start;
-            return 0;
-        }
-        
         // arr[start] <= num, start + 1 == end
-        if (arr[end] > num) {
-            return end;
-        }
-        
-        // all numbers in arr < num or arr[end] == num, return the number of numbers in arr
-        return arr.size();
+        return start + 1;
     }
 };
 
