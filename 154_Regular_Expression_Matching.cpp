@@ -27,7 +27,7 @@ Difficulty: Hard
 */
 
 class Solution {
-public:
+  public:
     /**
      * @param s: A string 
      * @param p: A string includes "." and "*"
@@ -35,14 +35,18 @@ public:
      */
     bool isMatch(string &s, string &p) {
         // write your code here
-        vector<vector<bool>> isVisited(s.length(), vector<bool>(p.length(), false));
-        vector<vector<bool>> memo(s.length(), vector<bool>(p.length(), false));
+        visited_.resize(s.length(), vector<bool>(p.length(), false));
+        memo_.resize(s.length(), vector<bool>(p.length(), false));
         
-        return dfs(s, 0, p, 0, isVisited, memo);
+        return dfs(s, 0, p, 0);
     }
     
-    bool dfs(string &s, int sIdx, string &p, int pIdx, 
-            vector<vector<bool>> &isVisited, vector<vector<bool>> &memo) {
+  private:
+    vector<vector<bool>> visited_;
+    vector<vector<bool>> memo_;
+    
+  private:
+    bool dfs(string &s, int sIdx, string &p, int pIdx) {
         if (pIdx == p.length()) 
             return sIdx == s.length();
             
@@ -50,25 +54,24 @@ public:
             // must be _*_*_* pattern
             return isEmpty(p, pIdx);
             
-        if (isVisited[sIdx][pIdx]) 
-            return memo[sIdx][pIdx];
+        if (visited_[sIdx][pIdx]) 
+            return memo_[sIdx][pIdx];
             
-        isVisited[sIdx][pIdx] = true;
+        visited_[sIdx][pIdx] = true;
         
         char sChar = s[sIdx], pChar = p[pIdx];
         bool match;
         
         // _*: can either match empty or a '_'
         if (pIdx + 1 < p.length() && p[pIdx+1] == '*') {
-            match = dfs(s, sIdx, p, pIdx + 2, isVisited, memo) ||
-                    (isCharMatch(sChar, pChar) && dfs(s, sIdx + 1, p, pIdx, isVisited, memo));
+            match = dfs(s, sIdx, p, pIdx + 2) ||
+                    (isCharMatch(sChar, pChar) && dfs(s, sIdx + 1, p, pIdx));
         } else {
             // _: must match the character
-            match = isCharMatch(sChar, pChar) && 
-                    dfs(s, sIdx + 1, p, pIdx + 1, isVisited, memo);
+            match = isCharMatch(sChar, pChar) && dfs(s, sIdx + 1, p, pIdx + 1);
         }
         
-        memo[sIdx][pIdx] = match;
+        memo_[sIdx][pIdx] = match;
         
         return match;
     }
