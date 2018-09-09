@@ -80,7 +80,7 @@ class Solution {
         return res;
     }
     
-    // binary search for the position, i.e. number of elements â‰¤ val
+    // binary search for the position, i.e. number of elements <= val
     int countLTE(const vector<int> &arr, int val) {
         if (arr.empty()) {
             return 0;
