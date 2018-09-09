@@ -17,7 +17,7 @@ Difficulty: Hard
 */
 
 class Solution {
-public:
+  public:
     /*
      * @param s: A string
      * @param wordDict: A set of words.
@@ -25,39 +25,43 @@ public:
      */
     vector<string> wordBreak(string &s, unordered_set<string> &wordDict) {
         // write your code here
-        unordered_map<string, vector<string>> memo;
-        
-        return dfs(s, wordDict, memo);
+        return dfs(s, wordDict);
     }
     
-    vector<string> dfs(string &s, unordered_set<string> &wordDict, 
-                      unordered_map<string, vector<string>> &memo) {
+  private:
+    unordered_map<string, vector<string>> memo_;
+  
+  private:
+    vector<string> dfs(string &s, unordered_set<string> &wordDict) {
         vector<string> res;
-        if (s.length() == 0)
+        if (s.empty()) {
             return res;
+        }
 
-        if (memo.find(s) != memo.end())
-            return memo[s];
+        if (memo_.count(s)) {
+            return memo_[s];
+        }
             
-        if (wordDict.find(s) != wordDict.end()) {
+        if (wordDict.count(s)) {
             res.push_back(s);
         }
             
         for (int len = 1; len < s.length(); ++len) {
             string word = s.substr(0, len);
             
-            if (wordDict.find(word) == wordDict.end()) 
+            if (!wordDict.count(word)) { 
                 continue;
+            }
         
             string suffix = s.substr(len);
-            vector<string> segs = dfs(suffix, wordDict, memo);
+            vector<string> segs = dfs(suffix, wordDict);
             
             for (string seg : segs) {
                 res.push_back(word + ' ' + seg);
             }
         }
         
-        memo[s] = res;
+        memo_[s] = res;
         
         return res;
     }
