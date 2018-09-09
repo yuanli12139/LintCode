@@ -62,3 +62,45 @@ class Solution:
             return res
             
         return 0
+
+
+'''
+Reference
+https://www.youtube.com/watch?v=vvua0G0eqsM
+
+Date: 9/8/2018
+'''
+
+class Solution:
+    """
+    @param str: A string
+    @return: An integer
+    """
+    def atoi(self, str):
+        # write your code here
+        res = 0
+        if not str:
+            return res
+        
+        str = str.strip()
+        
+        sign = 1
+        start = 0
+        if str[0] == '+':
+            start += 1
+        elif str[0] == '-':
+            start += 1
+            sign = -1
+
+        for i in range(start, len(str)):
+            if not str[i].isdigit():
+                break
+                
+            res = res * 10 + int(str[i])
+            if sign == 1 and res > 2147483647:
+                return 2147483647
+            
+            if sign == -1 and res > 2147483648:
+                return -2147483648
+                
+        return res * sign
