@@ -30,14 +30,14 @@ class Solution {
         int n = A.size() + B.size(); // n >= 1
         
         if (n % 2 == 0) {
-            return (median(A, B, n / 2) + median(A, B, n / 2 + 1)) / 2.;
+            return (findKth(A, B, n / 2) + findKth(A, B, n / 2 + 1)) / 2.;
         }
         
-        return median(A, B, n / 2 + 1);
+        return findKth(A, B, n / 2 + 1);
     }
     
   private:
-    int median(vector<int> &A, vector<int> &B, int k) {
+    int findKth(vector<int> &A, vector<int> &B, int k) {
         if (A.empty()) {
             return B[k-1];
         }
