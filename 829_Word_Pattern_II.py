@@ -52,4 +52,58 @@ class Solution:
                     del table[c]
                     
         return False
+
+
+'''
+Date: 9/9/2018
+'''
+
+class Solution:
+    """
+    @param pattern: a string,denote pattern string
+    @param str: a string, denote matching string
+    @return: a boolean
+    """
+    def __init__(self):
+        self._pattern_str = {}
+        self._mapped_str = set()
+    
+    def wordPatternMatch(self, pattern, str):
+        # write your code here
+        return self.dfs(pattern, str)
+        
+    def dfs(self, pattern, str):
+        if not pattern:
+            return not str
             
+        p = pattern[0]
+        if p in self._pattern_str:
+            match = self._pattern_str[p]
+            if str[:len(match)] != match:
+                return False
+                
+            remain_pattern = pattern[1:]
+            remain_str = str[len(match):]
+            
+            return self.dfs(remain_pattern, remain_str)
+            
+        for i in range(1, len(str) + 1):
+            s = str[:i]
+            if s in self._mapped_str:
+                continue
+            
+            self._pattern_str[p] = s
+            self._mapped_str.add(s)
+            
+            remain_pattern = pattern[1:]
+            remain_str = str[i:]
+            
+            if self.dfs(remain_pattern, remain_str):
+                return True
+                
+            # del self._pattern_str[p] # key exsits for sure
+            self._pattern_str.pop(p, None)
+            self._mapped_str.remove(s)
+            
+        return False
+  
