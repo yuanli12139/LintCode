@@ -34,9 +34,9 @@ class Solution:
             res.append(item)
             
         if l > 0:
-            self.helper(l-1, r, item + '(', res)
+            self.helper(l - 1, r, item + '(', res)
             
         if r > 0:
-            self.helper(l, r-1, item + ')', res)
+            self.helper(l, r - 1, item + ')', res)
     
         
