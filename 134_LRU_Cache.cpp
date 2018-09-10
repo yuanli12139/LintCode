@@ -188,8 +188,10 @@ class LRUCache {
         m_[key] = cache_.begin();
     }
     
-  private:
+  private:  
+    typedef pair<int, int> Node; // {key, value}
+    
     int capacity_;
-    list<pair<int, int>> cache_; // {key, value} <-> {key, value} <-> ...
-    unordered_map<int, list<pair<int, int>>::iterator> m_; // key -> iterator of node
+    list<Node> cache_; // {key, value} <-> {key, value} <-> ...
+    unordered_map<int, list<Node>::iterator> m_; // key -> iterator of node
 };
