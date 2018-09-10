@@ -85,7 +85,7 @@ class AllOne {
         return l_.empty() ? "" : *(l_.back().keys.cbegin());
     }
     
-    /** Returns one of the keys with Minimal value. */
+    /** Returns one of the keys with minimal value. */
     string getMinKey() {
         return l_.empty() ? "" : *(l_.front().keys.cbegin());
     }
