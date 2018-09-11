@@ -63,7 +63,6 @@ class Solution {
             
             // move i to find the best start
             while (remain == 0) {
-                cout << remain << endl;
                 if (j - i + 1 < min_len) {
                     start = i;
                     min_len = j - i + 1;
