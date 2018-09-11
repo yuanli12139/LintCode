@@ -61,10 +61,11 @@ class Solution:
         hash2strs = {}
         for s in strs:
             h = self.getHash(s, prime_nums)
-            if h not in hash2strs:
-                hash2strs[h] = [s]
-            else:
-                hash2strs[h].append(s)
+            # if h not in hash2strs:
+            #     hash2strs[h] = [s]
+            # else:
+            #     hash2strs[h].append(s)
+            hash2strs.setdefault(h, []).append(s)
                 
         res = []
         for _, str_list in hash2strs.items():
@@ -79,3 +80,4 @@ class Solution:
             h *= prime_nums[ord(c) - ord('a')]
             
         return h
+
