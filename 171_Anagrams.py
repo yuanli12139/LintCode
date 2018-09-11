@@ -34,10 +34,11 @@ class Solution:
         sorted2strs = {}
         for s in strs:
             sorted_str = ''.join(sorted(s))
-            if sorted_str not in sorted2strs:
-                sorted2strs[sorted_str] = [s]
-            else:
-                sorted2strs[sorted_str].append(s)
+            # if sorted_str not in sorted2strs:
+            #     sorted2strs[sorted_str] = [s]
+            # else:
+            #     sorted2strs[sorted_str].append(s)
+            sorted2strs.setdefault(sorted_str, []).append(s)
                 
         res = []
         for _, str_list in sorted2strs.items():
