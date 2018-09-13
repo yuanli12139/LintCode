@@ -29,10 +29,13 @@ public:
         
         int last_min = INT_MAX;
         for (auto p : prices) {
-            res = p - last_min > res ? p - last_min : res;
-            last_min = p < last_min ? p : last_min;
+            // res = p - last_min > res ? p - last_min : res;
+            res = max(res, p - last_min);
+            // last_min = p < last_min ? p : last_min;
+            last_min = min(last_min, p);
         }
         
         return res;
     }
 };
+

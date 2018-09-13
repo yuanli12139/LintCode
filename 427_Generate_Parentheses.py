@@ -32,11 +32,12 @@ class Solution:
         
         if l == 0 and r == 0:
             res.append(item)
+            return
             
         if l > 0:
-            self.helper(l-1, r, item + '(', res)
+            self.helper(l - 1, r, item + '(', res)
             
         if r > 0:
-            self.helper(l, r-1, item + ')', res)
+            self.helper(l, r - 1, item + ')', res)
     
         

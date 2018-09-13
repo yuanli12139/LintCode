@@ -42,13 +42,15 @@ class Solution:
         return self.res
         
     def inOrder(self, root, k):
-        if root:
-            self.inOrder(root.left, k)
-
-            self.count += 1
-            if self.count == k:
-                self.res = root.val
-                return
+        if not root:
+            return
             
-            self.inOrder(root.right, k)
+        self.inOrder(root.left, k)
+
+        self.count += 1
+        if self.count == k:
+            self.res = root.val
+            return
+
+        self.inOrder(root.right, k)
         

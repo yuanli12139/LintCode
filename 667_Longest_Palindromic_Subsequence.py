@@ -8,6 +8,9 @@ Example
 Given s = "bbbab" return 4
 One possible longest palindromic subsequence is "bbbb".
 
+Reference
+https://zxi.mytechroad.com/blog/dynamic-programming/leetcode-516-longest-palindromic-subsequence/
+
 
 Author: Yuan Li
 Date: 8/11/2018 
@@ -47,8 +50,8 @@ class Solution:
         return dp[0][n-1]
 
 
-# time: O(n^2)
-# space: O(n)
+# Time: O(n^2)
+# Space: O(n)
 class Solution:
     """
     @param s: the maximum length of s is 1000
@@ -79,7 +82,8 @@ class Solution:
                 else:
                     dp0[i] = max(dp1[i+1], dp1[i])
                     
-            dp2 = dp1[:]
-            dp1 = dp0[:]
+            # O(1) swap
+            dp0, dp1 = dp1, dp0 # dp1 <- dp0 
+            dp0, dp2 = dp2, dp0 # dp2 <- dp1
                     
-        return dp0[0]
+        return dp1[0]

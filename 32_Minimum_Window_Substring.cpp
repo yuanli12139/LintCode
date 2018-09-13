@@ -29,7 +29,7 @@ Difficulty: Medium
 */
 
 class Solution {
-public:
+  public:
     /**
      * @param source : A string
      * @param target: A string
@@ -43,11 +43,12 @@ public:
         
         unordered_map<char, int> tChar_cnt;
         for (char c : target) {
-            if (tChar_cnt.count(c)) {
-                tChar_cnt[c]++;
-            } else {
-                tChar_cnt[c] = 1;
-            }
+            // if (tChar_cnt.count(c)) {
+            //     tChar_cnt[c]++;
+            // } else {
+            //     tChar_cnt[c] = 1;
+            // }
+            ++tChar_cnt[c];
         }
         
         int start = -1;
@@ -62,7 +63,6 @@ public:
             
             // move i to find the best start
             while (remain == 0) {
-                cout << remain << endl;
                 if (j - i + 1 < min_len) {
                     start = i;
                     min_len = j - i + 1;

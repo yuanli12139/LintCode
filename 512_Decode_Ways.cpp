@@ -99,7 +99,7 @@ class Solution {
             return 0;
         }
         
-        // single charactr or empty
+        // single character or empty
         if (start >= s.length() - 1) { 
             return 1;
         }
