@@ -48,7 +48,7 @@ class Solution {
         }
         
         // handle int overflow
-        // if nums is not empty, meaning lower can't initially be INT_MIN
+        // if nums is not empty, meaning lower can't be INT_MIN here
         if (!nums.empty() && lower == INT_MIN) { 
             return res;
         }
