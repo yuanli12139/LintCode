@@ -83,9 +83,11 @@ class Solution {
         }
         
         addRange(res, (long)lower, (long)nums[0] - 1);
+        
         for (int i = 1; i < nums.size(); ++i) {
             addRange(res, (long)nums[i - 1] + 1, (long)nums[i] - 1);    
         }
+        
         addRange(res, (long)nums.back() + 1, (long)upper);
         
         return res;
@@ -96,7 +98,6 @@ class Solution {
         if (start > end) {
             return;
         }
-        
         if (start == end) {
             res.push_back(to_string(end));
         } else {
