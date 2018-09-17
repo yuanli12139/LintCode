@@ -16,7 +16,7 @@ Difficulty: Easy
 */
 
 class MovingAverage {
-public:
+  public:
     /*
     * @param size: An integer
     */
@@ -43,10 +43,56 @@ public:
         return sum / q.size();
     }
 
-private:
+  private:
     queue<int> q;
     int size;
     double sum;
+};
+
+/**
+ * Your MovingAverage object will be instantiated and called as such:
+ * MovingAverage obj = new MovingAverage(size);
+ * double param = obj.next(val);
+ */
+
+
+// Date: 9/16/2018
+// rolling array 
+class MovingAverage {
+  public:
+    /*
+    * @param size: An integer
+    */
+    MovingAverage(int size) {
+        // do intialization if necessary
+        size_ = size;
+        sum_.resize(size_ + 1, 0);
+        idx_ = 0;
+    }
+
+    /*
+     * @param val: An integer
+     * @return:  
+     */
+    double next(int val) {
+        // write your code here
+        ++idx_;
+        sum_[mod(idx_)] = sum_[mod(idx_ - 1)] + val;
+        if (idx_ - size_ >= 0) {
+            return (sum_[mod(idx_)] - sum_[mod(idx_ - size_)]) / size_;
+        }
+        return sum_[idx_] / idx_;
+    }
+
+  private:
+    vector<double> sum_;
+    int size_;
+    int idx_;
+    
+  private:
+    int mod(int n) {
+        return n % (size_ + 1);
+    }
 };
 
 /**
