@@ -62,3 +62,45 @@ class Solution {
         return res;
     }
 };
+
+
+// Date: 9/16/2018
+class Solution {
+  public:
+    /*
+     * @param nums: a sorted integer array
+     * @param lower: An integer
+     * @param upper: An integer
+     * @return: a list of its missing ranges
+     */
+    vector<string> findMissingRanges(vector<int> &nums, int lower, int upper) {
+        // write your code here
+        vector<string> res;
+        
+        if (nums.empty()) {
+            addRange(res, (long)lower, (long)upper);
+            return res;
+        }
+        
+        addRange(res, (long)lower, (long)nums[0] - 1);
+        for (int i = 1; i < nums.size(); ++i) {
+            addRange(res, (long)nums[i - 1] + 1, (long)nums[i] - 1);    
+        }
+        addRange(res, (long)nums.back() + 1, (long)upper);
+        
+        return res;
+    }
+    
+  private:
+    void addRange(vector<string> &res, long start, long end) {
+        if (start > end) {
+            return;
+        }
+        
+        if (start == end) {
+            res.push_back(to_string(end));
+        } else {
+            res.push_back(to_string(start) + "->" + to_string(end));
+        }
+    }
+};
