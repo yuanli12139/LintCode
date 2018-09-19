@@ -36,8 +36,7 @@ class Solution {
                 pre_sum += nums[j++];
             }
             
-            // constraint satisfied
-            if (pre_sum >= s) {
+            if (pre_sum >= s) { // constraint satisfied
                 min_len = min(min_len, j - i);
             } else {
                 break;
