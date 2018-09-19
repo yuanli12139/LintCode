@@ -27,22 +27,22 @@ class Solution {
             return -1;
         }
         
-        int pre_sum = 0;
+        int sub_sum = 0;
         int n = nums.size();
         int min_len = n + 1;
         
         for (int i = 0, j = 0; i < n; ++i) {
-            while (j < n && pre_sum < s) {
-                pre_sum += nums[j++];
+            while (j < n && sub_sum < s) {
+                sub_sum += nums[j++];
             }
             
-            if (pre_sum >= s) { // constraint satisfied
+            if (sub_sum >= s) { // constraint satisfied
                 min_len = min(min_len, j - i);
             } else {
                 break;
             }
             
-            pre_sum -= nums[i];
+            sub_sum -= nums[i];
         }
         
         return min_len == n + 1 ? -1 : min_len;
