@@ -50,8 +50,7 @@ public:
             k_max = pq.top();
             pq.pop();
             
-            int i = get<1>(k_max);
-            int j = get<2>(k_max);
+            int i = get<1>(k_max), j = get<2>(k_max);
             if (j + 1 < arrays[i].size()) {
                 pq.push(make_tuple(arrays[i][j+1], i, j+1));
             }
