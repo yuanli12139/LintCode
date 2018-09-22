@@ -17,7 +17,7 @@ Difficulty: Medium
 */
 
 class Solution {
-public:
+  public:
     /**
      * @param arrays: a list of array
      * @param k: An integer
