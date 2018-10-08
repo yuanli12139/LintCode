@@ -27,7 +27,7 @@ Date: 10/6/2018
 Difficulty: Medium
 */
 
-// time: O(k * log(min(n, m)))
+// O(k * log(min(n, m)))
 #include <boost/functional/hash.hpp>
 
 class Solution {
