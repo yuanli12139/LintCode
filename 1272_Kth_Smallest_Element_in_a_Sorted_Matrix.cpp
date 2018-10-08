@@ -60,7 +60,6 @@ class Solution {
                 if (valid(make_pair(nr, nc), matrix)) {
                     pq.push(make_pair(nr, nc));
                     rm_.insert(make_pair(nr, nc));
-
                 }
             }
         }
