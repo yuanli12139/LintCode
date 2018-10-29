@@ -61,6 +61,43 @@ Date: 10/28/2018
 Difficulty: Easy
 '''
 
+class Log:
+    def __init__(self, log):
+        self.log_id, self.content = log.split(" ", 1)
+        self.component = 1
+        if self.content[0].isdigit():
+            self.component = 2
+        
+    def __lt__(self, other):
+        if self.component == 1 and other.component == 1:
+            if self.content == other.content:
+                return self.log_id < other.log_id
+            return self.content < other.content
+            
+        return self.component < other.component 
+        
+class Solution:
+    """
+    @param logs: the logs
+    @return: the log after sorting
+    """
+
+    def logSort(self, logs):
+        # Write your code here
+        log2s = []
+        for log in logs:
+            log2 = Log(log)
+            log2s.append(log2)
+        
+        log2s.sort()
+        
+        res = []
+        for log2 in log2s:
+            res.append(log2.log_id + " " + log2.content)
+        
+        return res
+        
+
 #!/usr/bin/python2
 class Solution:
     """
