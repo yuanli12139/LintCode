@@ -8,6 +8,7 @@ There are two ways to make content:
 All consist of letters and spaces.
 All consist of numbers and spaces.
 Now that the logs are sorted, it is required that component 1 be sorted in order of content lexicography and placed at the top, and component 2 should be placed at the bottom and output in the order of input. (Note that the space also belongs to the content, and when the lexicographic order of the composition method 1 is equal, sort according to the dictionary order of log ID., and the guarantee ID is not repeated)
+
 Example
 Given
 
@@ -27,6 +28,7 @@ Given
 ]
 Explanation:
 "Act zoo" < "act car", So the output is as above.
+
 Given
 
 [
@@ -50,6 +52,7 @@ Given
 Explanation:
 Because "Bctzoo" == "Bctzoo", the comparison "Tab" and "Tac" have "Tab" < Tac ", so" Tab Bctzoo "< Tac Bctzoo".
 Because ' '<'z', so "A100 Act zoo" < A100 Actzoo".
+
 Notice
 The total number of logs entered was n, and n < = 10000.
 
