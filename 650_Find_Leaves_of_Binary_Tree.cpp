@@ -53,7 +53,7 @@ class Solution {
     unordered_map<int, vector<int>> depth_vals_;
 
   private:
-    int dfs(TreeNode* node) {
+    int dfs(TreeNode* node) { // get current depth
         if (node == nullptr) {
             return 0;
         }
