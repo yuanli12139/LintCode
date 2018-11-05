@@ -20,7 +20,7 @@ Difficulty: Medium
 */
 
 class Solution {
-public:
+  public:
     /**
      * @param heights: a list of integers
      * @return: a integer
@@ -31,27 +31,30 @@ public:
             return 0;
         }
         
-        int water = 0;
         int left = 0, right = heights.size() - 1;
         int left_h = heights[left], right_h = heights[right];
         
         while (left < right) {
             if (heights[left] < heights[right]) {
                 if (heights[++left] < left_h) {
-                    water += left_h - heights[left];
+                    water_ += left_h - heights[left];
                 } else {
                     left_h = heights[left];
                 }
                 
             } else {
                 if (heights[--right] < right_h) {
-                    water += right_h - heights[right];
+                    water_ += right_h - heights[right];
                 } else {
                     right_h = heights[right];
                 }
             }
         }
         
-        return water;
+        return water_;
     }
+    
+  private:
+    int water_ = 0;
 };
+
