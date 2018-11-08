@@ -39,7 +39,7 @@ class Solution:
             if i < min(l1, l2):
                 s = int(num1[l1-i-1]) + int(num2[l2-i-1]) + carry
             else:
-               	s = int(max_num[len(max_num)-i-1]) + carry
+                s = int(max_num[len(max_num)-i-1]) + carry
             
             res += str(s % 10)
             carry = s >= 10
