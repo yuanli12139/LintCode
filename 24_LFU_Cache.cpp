@@ -28,6 +28,9 @@ get(1)
 get(4)
 >> 4
 
+Reference
+https://zxi.mytechroad.com/blog/hashtable/leetcode-460-lfu-cache/
+
 
 Author: Yuan Li
 Date: 11/11/2018 
