@@ -113,6 +113,7 @@ class LFUCache {
     
     int capacity_;
     long tick_;
+    
     unordered_map<int, Node> kn_; // key -> node
     std::set<Node> cache_;
     
@@ -123,6 +124,103 @@ class LFUCache {
         ++node.freq;
         node.tick = ++tick_;
         cache_.insert(node);
+    }
+};
+
+
+// Date: 11/12/2018
+// set: O(1) 
+// get: O(1)
+#include <list>
+
+class LFUCache {
+  public:
+    /*
+    * @param capacity: An integer
+    */LFUCache(int capacity) {
+        // do intialization if necessary
+        capacity_ = capacity;
+        min_freq_ = 0;
+    }
+
+    /*
+     * @param key: An integer
+     * @param value: An integer
+     * @return: nothing
+     */
+    void set(int key, int value) {
+        // write your code here
+        if (capacity_ == 0) {
+            return;
+        }
+        
+        auto it = kn_.find(key);
+        
+        // key exists, simply update val and freq
+        if (it != kn_.cend()) {
+            it->second.val = value;
+            update(it->second);
+            return;
+        }
+            
+        // key doesn't exists, remove a least frequent node
+        if (kn_.size() == capacity_) {
+            const int key_to_evict = fl_[min_freq_].back();
+            fl_[min_freq_].pop_back();
+            kn_.erase(key_to_evict);
+        }
+        
+        // add new node (freq = 1)
+        fl_[1].push_front(key);
+        kn_[key] = {key, value, 1, fl_[1].cbegin()};
+        
+        min_freq_ = 1;
+    }
+
+    /*
+     * @param key: An integer
+     * @return: An integer
+     */
+    int get(int key) {
+        // write your code here
+        auto it = kn_.find(key);
+        if (it == kn_.cend()) {
+            return -1;
+        }
+        update(it->second);
+        return it->second.val;
+    }
+    
+  private:
+    struct Node {
+        int key;
+        int val;
+        int freq;
+        list<int>::const_iterator it;
+    };
+    
+    int capacity_;
+    int min_freq_;
+    
+    unordered_map<int, Node> kn_; // key -> node
+    unordered_map<int, list<int>> fl_; // freq -> list of keys
+    
+  private:
+    void update(Node &node) {
+        const int prev_freq = node.freq;
+        const int freq = ++node.freq;
+        
+        fl_[prev_freq].erase(node.it);
+        if (fl_[prev_freq].empty()) {
+            fl_.erase(prev_freq);
+            
+            if (min_freq_ == prev_freq) {
+                ++min_freq_;
+            }
+        }
+        
+        fl_[freq].push_front(node.key);
+        node.it = fl_[freq].cbegin();
     }
 };
 
