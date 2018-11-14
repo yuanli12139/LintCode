@@ -31,7 +31,7 @@ Date: 11/14/2018
 Difficulty: Hard
 '''
 
-# O(max(klog(k) + (n-k+1)*k))
+# O(max(k*log(k) + (n-k+1)*k))
 from bisect import bisect_left, insort_left 
 
 class Solution:
