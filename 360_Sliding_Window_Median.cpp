@@ -29,7 +29,7 @@ Date: 11/14/2018
 Difficulty: Hard
 */
 
-// insertion sort - O(klog(k) + (n-k+1)*k)
+// insertion sort - O(max(klog(k) + (n-k+1)*k))
 class Solution {
   public:
     /**
