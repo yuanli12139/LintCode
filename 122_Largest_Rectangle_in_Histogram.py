@@ -33,7 +33,7 @@ class Solution:
         # write your code here
         max_area = 0
         
-        idx_stack = [] # monotonic stack
+        idx_stack = [] # monotonous stack
         for i, h in enumerate(height + [0]): # add 0 to ensure everything gets popped out
             while idx_stack and height[idx_stack[-1]] >= h:
                 i_pop = idx_stack.pop()
