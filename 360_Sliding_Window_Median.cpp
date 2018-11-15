@@ -85,7 +85,7 @@ class Solution {
             return nums;
         }
         
-        // a set that allows duplicates
+        // a set that allows duplicate keys
         multiset<int> win(nums.begin(), nums.begin() + k - 1); // first k-1 nums
         
         auto mid = next(win.begin(), (k - 1) / 2); // initial median iterator
