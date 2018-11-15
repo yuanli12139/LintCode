@@ -66,3 +66,48 @@ class Solution {
     }
 };
 
+
+// BST - O(max(k*log(k), (n-k)*log(k)))
+class Solution {
+  public:
+    /**
+     * @param nums: A list of integers
+     * @param k: An integer
+     * @return: The median of the element inside the window at each moving
+     */
+    vector<int> medianSlidingWindow(vector<int> &nums, int k) {
+        // write your code here
+        vector<int> medians;
+        if (k == 0) {
+            return medians;
+        } 
+        if (k == 1) {
+            return nums;
+        }
+        
+        // a set that allows duplicates
+        multiset<int> win(nums.begin(), nums.begin() + k - 1); // first k-1 nums
+        
+        auto mid = next(win.begin(), (k - 1) / 2); // initial median iterator
+        for (int i = k - 1; i < nums.size(); ++i) {
+            win.insert(nums[i]);
+            
+            // insert to the left -> adjust mid after insertion
+            if (nums[i] < *mid) {
+                --mid;
+            }
+            
+            medians.push_back(*mid);
+            
+            // remove one from the left -> adjust mid before removal
+            if (nums[i-k+1] <= *mid) {
+                ++mid;
+            }
+            
+            win.erase(win.lower_bound(nums[i-k+1]));
+        }
+        
+        return medians;
+    }
+};
+
