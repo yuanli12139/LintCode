@@ -31,7 +31,7 @@ class Solution:
         
         left, right = 0, len(num) - 1
         while left <= right:
-            if num[left] not in table or table[num[left]] != num[right]:
+            if num[left] not in table or table[num[left]] != num[right]: # when left == right, 6 != 9
                 return False
             
             left += 1
