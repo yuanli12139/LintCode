@@ -62,19 +62,21 @@ class Solution {
         });
         
         vector<vector<int>> res;
+        int last_h = 0;
+        
         for (const auto &e : events) {
             int x = e.first;
             int h = abs(e.second);
             
             if (e.second > 0) { // entering
                 if (h > maxHeight()) {
-                    merge(x, h, res);
+                    merge(x, h, last_h, res);
                 }
                 heights_.insert(h);
             } else {
                 heights_.erase(heights_.equal_range(h).first);
                 if (h > maxHeight()) {
-                    merge(x, maxHeight(), res);
+                    merge(x, maxHeight(), last_h, res);
                 }
             }
         }
@@ -84,15 +86,14 @@ class Solution {
     
   private:
     multiset<int> heights_;
-    int last_height_ = 0;
     
   private:
     int maxHeight() const {
         return heights_.empty() ? 0 : *heights_.rbegin();
     }
     
-    void merge(int position, int height, vector<vector<int>> &intervals) {
-        if (last_height_ > 0) {
+    void merge(int position, int height, int &last_height, vector<vector<int>> &intervals) {
+        if (last_height > 0) {
             intervals.back()[1] = position;
         }
         
@@ -100,7 +101,7 @@ class Solution {
             intervals.push_back({position, position, height});
         }
         
-        last_height_ = height;
+        last_height = height;
     }
 };
 
