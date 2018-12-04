@@ -32,7 +32,7 @@ class Solution {
         int n = matrix.size(), m = matrix[0].size();
         
         // initialize
-        // at (r, c) as right-bottom corner, area of the maximal all-1 square 
+        // at (r, c) as right-bottom corner, length of the maximal all-1 square 
         vector<vector<int>> dp(2, vector<int> (m, 0)); 
         int max_edge = 0;
         for (int c = 0; c < m; ++c) {
