@@ -51,7 +51,7 @@ class Solution {
                     dp[r%2][c] = 0;
                 }
                 
-                max_edge =  max(max_edge, dp[r%2][c]);
+                max_edge = max(max_edge, dp[r%2][c]);
             }
         }
         
