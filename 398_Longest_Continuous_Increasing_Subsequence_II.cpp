@@ -39,7 +39,7 @@ class Solution {
         
         int n = matrix.size(), m = matrix[0].size();
         
-        int longest = 0;
+        int longest = 1;
         for (int r = 0; r < n; ++r) {
             for (int c = 0; c < m; ++c) {
                 longest = max(longest, dfs(matrix, r, c));
