@@ -52,8 +52,8 @@ class Solution {
   private:
     unordered_map<pair<int, int>, int, boost::hash<pair<int, int>>> mem_;
   
-    vector<int> dr = {-1, 1, 0, 0};
-    vector<int> dc = {0, 0, -1, 1};
+    vector<int> dr_ = {-1, 1, 0, 0};
+    vector<int> dc_ = {0, 0, -1, 1};
     
   private:
     int dfs(const vector<vector<int>> &matrix, int r, int c) {
@@ -63,8 +63,8 @@ class Solution {
         
         int longest = 1;
         for (int i = 0; i < 4; ++i) {
-            int nr = r + dr[i];
-            int nc = c + dc[i];
+            int nr = r + dr_[i];
+            int nc = c + dc_[i];
             
             if (valid(matrix, nr, nc) && matrix[r][c] < matrix[nr][nc]) {
                 longest = max(longest, dfs(matrix, nr, nc) + 1);
