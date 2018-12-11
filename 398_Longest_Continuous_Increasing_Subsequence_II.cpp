@@ -23,6 +23,7 @@ Date: 12/7/2018
 Difficulty: Hard
 */
 
+// memoization DP
 #include <boost/functional/hash.hpp>
 
 class Solution {
@@ -78,6 +79,67 @@ class Solution {
     
     bool valid(const vector<vector<int>> &matrix, const int r, const int c) {
         return r >= 0 && r < matrix.size() && c >= 0 && c < matrix[0].size();
+    }
+};
+
+
+// loop DP
+#include <boost/functional/hash.hpp>
+
+class Solution {
+  public:
+    /**
+     * @param matrix: A 2D-array of integers
+     * @return: an integer
+     */
+    int longestContinuousIncreasingSubsequence2(vector<vector<int>> &matrix) {
+        // write your code here
+        if (matrix.empty() || matrix[0].empty()) {
+            return 0;
+        }
+        
+        int n = matrix.size(), m = matrix[0].size();
+        
+        vector<vector<int>> points;
+        for (int r = 0; r < n; ++r) {
+            for (int c = 0; c < m; ++c) {
+                points.push_back({matrix[r][c], r, c});
+            }
+        }
+        
+        sort(points.begin(), points.end());
+
+        int max_longest = 1;
+        for (auto p : points) {
+            int r = p[1], c = p[2];
+            longest_[{r, c}] = 1;
+            
+            for (int i = 0; i < 4; ++i) {
+                int pr = r + dr_[i];
+                int pc = c + dc_[i];
+                
+                if (valid(matrix, r, c, pr, pc)) {
+                    longest_[{r, c}] = max(longest_[{r, c}], longest_[{pr, pc}] + 1);
+                    max_longest = max(max_longest, longest_[{r, c}]);
+                }
+            }
+        }
+        
+        return max_longest;
+    }
+    
+  private:
+    unordered_map<pair<int, int>, int, boost::hash<pair<int, int>>> longest_;
+  
+    vector<int> dr_ = {-1, 1, 0, 0};
+    vector<int> dc_ = {0, 0, -1, 1};
+    
+  private:
+    bool valid(const vector<vector<int>> &matrix, 
+                const int r, const int c, const int pr, const int pc) {
+        int n = matrix.size(), m = matrix[0].size();
+        return pr >= 0 && pr < n && pc >= 0 && pc < m && 
+                matrix[pr][pc] < matrix[r][c] && longest_[{pr, pc}] > 0;
     }
 };
 
