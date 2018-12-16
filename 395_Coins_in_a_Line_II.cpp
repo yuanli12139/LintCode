@@ -15,6 +15,7 @@ Date: 12/14/2018
 Difficulty: Medium
 */
 
+// loop DP
 class Solution {
   public:
     /**
@@ -26,7 +27,6 @@ class Solution {
         if (values.empty()) {
             return false;
         }
-        
         if (values.size() <= 2) {
             return true;
         }
@@ -50,6 +50,61 @@ class Solution {
         }
 
         return dp[0] > post_sum[0] - dp[0];
+    }
+};
+
+
+// memoization DP
+class Solution {
+  public:
+    /**
+     * @param values: a vector of integers
+     * @return: a boolean which equals to true if the first player will win
+     */
+    bool firstWillWin(vector<int> &values) {
+        // write your code here
+        if (values.empty()) {
+            return false;
+        }
+        if (values.size() <= 2) {
+            return true;
+        }
+        
+        pair<int, int> res = dfs(values, 0);
+        
+        return res.first > res.second;
+    }
+    
+  private:
+    unordered_map<int, pair<int, int>> mem_;
+    
+  private:
+    pair<int, int> dfs(const vector<int> &values, int index) {
+        if (index >= values.size()) {
+            return {0, 0};
+        }
+        if (index == values.size() - 1) {
+            return {values[index], 0}; 
+        }
+        if (index == values.size() - 2) {
+            return {values[index] + values[index+1], 0};
+        }
+        
+        if (mem_.count(index)) {
+            return mem_[index];
+        }
+        
+        pair<int, int> res1 = dfs(values, index + 1);
+        pair<int, int> res2 = dfs(values, index + 2);
+        
+        // after 1st player took the coin(s), the 1st player becomes 2nd player
+        int first = max(values[index] + res1.second,
+                        values[index] + values[index+1] + res2.second);
+                        
+        int total = values[index] + res1.first + res1.second;
+        
+        mem_[index] = {first, total - first};
+        return {first, total - first};
     }
 };
 
