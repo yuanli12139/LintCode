@@ -22,8 +22,9 @@ Date: 12/16/2018
 Difficulty: Hard
 */
 
+// loop DP
 class Solution {
-public:
+  public:
     /**
      * @param values: a vector of integers
      * @return: a boolean which equals to true if the first player will win
