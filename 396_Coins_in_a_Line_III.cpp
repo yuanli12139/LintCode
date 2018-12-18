@@ -60,3 +60,49 @@ class Solution {
     }
 };
 
+
+// memoization DP - Time Limit Exceeded
+#include <boost/functional/hash.hpp>
+
+class Solution {
+  public:
+    /**
+     * @param values: a vector of integers
+     * @return: a boolean which equals to true if the first player will win
+     */
+    bool firstWillWin(vector<int> &values) {
+        // write your code here
+        if (values.empty()) {
+            return false;
+        }
+        
+        pair<int, int> coins = dfs(values, 0, values.size() - 1);
+        
+        return coins.first > coins.second;
+    }
+  
+  private:
+    unordered_map<pair<int, int>, pair<int, int>, boost::hash<pair<int, int>>> mem_;
+    
+  private:
+    pair<int, int> dfs(const vector<int> &values, int i, int j) {
+        if (i == j) {
+            return {values[i], 0};
+        }
+        
+        if (mem_.count({i, j})) {
+            return mem_[{i, j}];
+        }
+        
+        pair<int, int> left = dfs(values, i + 1, j);
+        pair<int, int> right = dfs(values, i, j - 1);
+        
+        int first = max(values[i] + left.second, values[j] + right.second);
+        int total = values[i] + left.first + left.second;
+        
+        mem_[{i, j}] = {first, total - first};
+        
+        return {first, total - first};
+    }
+};
+
