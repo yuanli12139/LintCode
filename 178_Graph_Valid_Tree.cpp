@@ -16,6 +16,7 @@ Date: 12/26/2018
 Difficulty: Medium
 */
 
+// union find
 class Solution {
   public:
     /**
@@ -77,5 +78,65 @@ class Solution {
         
     //     return father_[node] = find(father_[node]);
     // }
+};
+
+
+// BFS
+class Solution {
+  public:
+    /**
+     * @param n: An integer
+     * @param edges: a list of undirected edges
+     * @return: true if it's a valid tree, or false
+     */
+    bool validTree(int n, vector<vector<int>> &edges) {
+        // write your code here
+        if (edges.size() != n - 1) {
+            return false;
+        }
+        
+        if (edges.empty()) {
+            return true;
+        }
+        
+        return bfs(buildGraph(edges), edges[0][0]) == n;
+    }
+    
+  private:
+    typedef unordered_map<int, unordered_set<int>> graph;
+    
+    graph buildGraph(const vector<vector<int>> &edges) {
+        graph g;
+        for (auto edge : edges) {
+            g[edge[0]].insert(edge[1]);
+            g[edge[1]].insert(edge[0]);
+        }
+        
+        return g;
+    }
+  
+    int bfs(const graph &g, int start) {
+        queue<int> q;
+        q.push(start);
+        
+        unordered_set<int> visited;
+        visited.insert(start);
+        
+        while (!q.empty()) {
+            int cur = q.front();
+            q.pop();
+            
+            // graph[cur] calls non-const member function since it adds 
+            // a default value when the item looked up is not found
+            for (int nxt : g.at(cur)) { 
+                if (!visited.count(nxt)) {
+                    visited.insert(nxt);
+                    q.push(nxt);
+                }
+            }
+        }
+        
+        return visited.size();
+    }
 };
 
