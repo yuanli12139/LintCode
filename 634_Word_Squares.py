@@ -35,7 +35,7 @@ Each word contains only lowercase English alphabet a-z.
 
 Author: Yuan Li
 Date: 1/6/2019 
-Difficulty: Medium
+Difficulty: Hard
 '''
 
 class TrieNode:
