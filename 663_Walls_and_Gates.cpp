@@ -77,8 +77,8 @@ class Solution {
   private:
     bool valid(const vector<vector<int>> &rooms, const int r, const int c) {
         return r >= 0 && r < rooms.size() &&
-              c >= 0 && c < rooms[0].size() &&
-              rooms[r][c] == INT_MAX;
+               c >= 0 && c < rooms[0].size() &&
+               rooms[r][c] == INT_MAX;
     }
 };
 
