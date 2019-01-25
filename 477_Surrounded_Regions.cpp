@@ -61,6 +61,7 @@ class Solution {
     
   private:
     typedef pair<int, int> Point;
+    
     const vector<int> dr_ = {-1, 1, 0, 0};
     const vector<int> dc_ = {0, 0, -1, 1};
     
