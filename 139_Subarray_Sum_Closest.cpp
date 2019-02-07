@@ -86,11 +86,11 @@ class Solution {
                 continue;
             }
             
-            if (abs(pre_sum[i-1].first - pre_sum[i].first) < min_sum) {
+            if (pre_sum[i].first - pre_sum[i-1].first < min_sum) {
                 res[0] = left_id;
                 res[1] = right_id;
                 
-                min_sum = abs(pre_sum[i-1].first - pre_sum[i].first);
+                min_sum = pre_sum[i].first - pre_sum[i-1].first;
             }
         }
         
