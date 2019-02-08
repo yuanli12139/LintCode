@@ -28,7 +28,7 @@ Input:
 Output: [[0, 0], [0, 0]]
 
 Challenge
-O(n3) time.
+O(n^3) time.
 
 Author: Yuan Li
 Date: 2/7/2019 
