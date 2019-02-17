@@ -33,7 +33,7 @@ class Solution {
      */
     vector<int> continuousSubarraySumII(vector<int> &A) {
         // write your code here
-        Result min_subarr = minMaxSubarraySum(A, true);
+        Result min_subarr = minMaxSubarraySum(A, -1);
         Result max_subarr = minMaxSubarraySum(A);
         
         int cir_sum = pre_sum_ + min_subarr.first; // all negative, cir_sum = 0
@@ -48,7 +48,7 @@ class Solution {
     typedef pair<int, vector<int>> Result;
     
   private:
-    Result minMaxSubarraySum(const vector<int> &A, bool isMin = false) {
+    Result minMaxSubarraySum(const vector<int> &A, int sign = 1) {
         pre_sum_ = 0;
         
         int min_sum = 0, max_sum = INT_MIN;
@@ -56,11 +56,7 @@ class Solution {
         
         Result res = {0, {0, 0}};
         for (int i = 0; i < A.size(); ++i) {
-            if (isMin) {
-                pre_sum_ -= A[i];
-            } else {
-                pre_sum_ += A[i];
-            }
+            pre_sum_ += sign * A[i];
             
             if (pre_sum_ - min_sum > max_sum) {
                 end = i;
