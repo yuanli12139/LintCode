@@ -45,7 +45,7 @@ The cells are adjacent in only four directions: up, down, left and right.
 
 
 Author: Yuan Li
-Date: 3/2/2019 
+Date: 3/3/2019 
 Difficulty: Medium
 '''
 
