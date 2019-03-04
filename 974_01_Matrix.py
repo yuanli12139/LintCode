@@ -57,7 +57,7 @@ class Solution:
     def updateMatrix(self, matrix):
         # write your code here  
         n, m = len(matrix), len(matrix[0])                     
-        dp = [[99 for _ in range(m + 2)] for _ in range(n + 2)]
+        dp = [[sys.maxsize for _ in range(m + 2)] for _ in range(n + 2)]
         for i in range(1, n + 1):
             for j in range(1, m + 1):
                 if matrix[i-1][j-1] == 0:
