@@ -31,48 +31,64 @@ Date: 3/10/2019
 Difficulty: Medium
 */
 
-class Solution {
+// O(n^2)
+class MyCalendar {
   public:
-    /**
-     * @param n: An integer
-     * @param nums: An array
-     * @return: the Kth largest element
-     */
-    int kthLargestElement(int n, vector<int> &nums) {
-        // write your code here
-        if (nums.empty() || n < 1 || n > nums.size()) {
-            return -1;
+    MyCalendar() {
+        
+    }
+    
+    bool book(int start, int end) {
+        for (const auto &event : booked_) {
+            if (max(event.first, start) < min(event.second, end)) {
+                return false;
+            }
         }
         
-        return quickSelect(n, nums, 0, nums.size() - 1);
+        booked_.emplace_back(start, end);
+        
+        return true;
     }
-  
+    
   private:
-    int quickSelect(int k, vector<int> &nums, int start, int end) {
-        int left = start, right = end;
-        int pivot = nums[(end - start) / 2 + start];
-        
-        while (left <= right) {
-            while (left <= right && nums[left] > pivot) {
-                ++left;
-            }
-            while (left <= right && nums[right] < pivot) {
-                --right;
-            }
-            
-            if (left <= right) {
-                int tmp = nums[left];
-                nums[left++] = nums[right];
-                nums[right--] = tmp;
-            }
-        }
-        
-        if (start + k - 1 <= right) {
-            return quickSelect(k, nums, start, right);
-        }
-        if (start + k - 1 >= left) {
-            return quickSelect(k - (left - start), nums, left, end);
-        }
-        return nums[right+1];
-    }
+    vector<pair<int, int>> booked_;
 };
+
+/**
+ * Your MyCalendar object will be instantiated and called as such:
+ * MyCalendar obj = new MyCalendar();
+ * bool param_1 = obj.book(start,end);
+ */
+
+
+ // O(nlog(n))
+class MyCalendar {
+  public:
+    MyCalendar() {
+        
+    }
+    
+    bool book(int start, int end) {
+        auto it = booked_.lower_bound(start); // find the 1st element >= start
+        if (it != booked_.cend() && it->first < end) {
+            return false;
+        }
+        if (it != booked_.cbegin() && (--it)->second > start) {
+            return false;
+        }
+        
+        booked_[start] = end;
+        
+        return true;
+    }
+    
+  private:
+    map<int, int> booked_;
+};
+
+/**
+ * Your MyCalendar object will be instantiated and called as such:
+ * MyCalendar obj = new MyCalendar();
+ * bool param_1 = obj.book(start,end);
+ */
+ 
