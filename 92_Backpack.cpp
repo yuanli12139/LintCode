@@ -57,3 +57,66 @@ class Solution {
     }
 };
 
+
+// Date: 3/10/2019
+// most efficient sol
+class Solution {
+  public:
+    /**
+     * @param m: An integer m denotes the size of a backpack
+     * @param A: Given n items with size A[i]
+     * @return: The maximum size
+     */
+    int backPack(int m, vector<int> &A) {
+        // write your code here
+        sort(A.begin(), A.end());
+        
+        vector<interval> intvs = {{0, 0}};
+        for (int a : A) {
+            vector<interval> new_intvs;
+            for (auto intv : intvs) {
+                if (intv.first + a == m) {
+                    return m;
+                }
+                if (intv.first + a < m) {
+                    new_intvs.emplace_back(intv.first + a, intv.second + a);
+                }
+            }
+            
+            intvs.insert(intvs.end(), new_intvs.begin(), new_intvs.end());
+            intvs = mergeIntervals(intvs);
+        }
+        
+        int max_size = 0;
+        for (auto intv : intvs) {
+            if (m >= intv.first) {
+                if (m <= intv.second) {
+                    return m;
+                } else {
+                    max_size = intv.second;
+                }
+            }
+        }
+        return max_size;
+    }
+    
+  private:
+    typedef pair<int, int> interval;
+    
+  private:
+    vector<interval> mergeIntervals(vector<interval> &intvs) {
+        // sort(intvs.begin(), intvs.end());
+        
+        vector<interval> merged;
+        for (auto intv : intvs) {
+            if (merged.empty() || merged.back().second + 1 < intv.first) {
+                merged.push_back(intv);
+            } else {
+                merged.back().second = max(merged.back().second, intv.second);
+            }
+        }
+        
+        return merged;
+    }
+};
+
