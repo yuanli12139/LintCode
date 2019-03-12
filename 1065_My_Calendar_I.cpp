@@ -25,6 +25,9 @@ Notice
 The number of calls to MyCalendar.book per test case will be at most 1000.
 In calls to MyCalendar.book(start, end), start and end are integers in the range [0, 10^9].
 
+Reference
+https://zxi.mytechroad.com/blog/algorithms/binary-search/leetcode-729-my-calendar-i/
+
 
 Author: Yuan Li
 Date: 3/10/2019 
