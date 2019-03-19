@@ -46,3 +46,32 @@ class Solution {
     }
 };
 
+
+// Date: 3/18/2019
+class Solution {
+  public:
+    /**
+     * @param matrix: a lists of integers
+     * @return: nothing
+     */
+    void rotate(vector<vector<int>> &matrix) {
+        // write your code here
+        int n = matrix.size();
+        
+        // 1. vectical flip
+        for (int r = 0; r < n / 2; ++r) {
+            for (int c = 0; c < n; ++c) {
+                int tmp = matrix[r][c];
+                swap(matrix[r][c], matrix[n-1-r][c]);
+            }
+        }
+        
+        // 2. swap (x, y) and (y, x)
+        for (int r = 0; r < n; ++r) {
+            for (int c = 0; c < r; ++c) {
+                swap(matrix[r][c], matrix[c][r]);
+            }
+        }
+    }
+};
+
