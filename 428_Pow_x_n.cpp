@@ -17,7 +17,7 @@ Difficulty: Medium
 */
 
 class Solution {
-public:
+  public:
     /*
      * @param x: the base number
      * @param n: the power number
@@ -46,3 +46,31 @@ public:
         return x * tmp * tmp;
     }
 };
+
+
+// Date: 3/21/2019
+class Solution {
+  public:
+    /*
+     * @param x: the base number
+     * @param n: the power number
+     * @return: the result
+     */
+    double myPow(double x, int n) {
+        // write your code here
+        if (n < 0) {
+            x = 1 / x;
+            n = -n;
+        }
+        
+        double tmp = x, res = 1;
+        for (; n != 0; n /= 2, tmp *= tmp) {
+            if (n % 2) {
+                res *= tmp;
+            }
+        }
+        
+        return res;
+    }
+};
+
