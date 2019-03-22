@@ -72,7 +72,7 @@ class Solution {
         string res;
         for (int i = 1; i < max_len; ++i) {
             tmp[i] += tmp[i-1] / 10;
-            tmp[i-1] = tmp[i-1] % 10;
+            tmp[i-1] %= 10;
             
             res = to_string(tmp[i-1] % 10) + res;
         }
