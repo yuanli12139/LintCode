@@ -74,7 +74,7 @@ class Solution {
             tmp[i] += tmp[i-1] / 10;
             tmp[i-1] %= 10;
             
-            res = to_string(tmp[i-1] % 10) + res;
+            res = to_string(tmp[i-1]) + res;
         }
         
         res = to_string(tmp.back() % 10) + res;
