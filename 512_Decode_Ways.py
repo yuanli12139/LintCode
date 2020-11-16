@@ -21,7 +21,7 @@ Output: 1
 
 Notice
 we can't decode an empty string. So you should return 0 if the message is empty.
-The length of message n \leq 100n≤100
+The length of message n ≤ 100
 
 
 Author: Yuan Li
