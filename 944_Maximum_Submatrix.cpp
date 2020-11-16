@@ -25,7 +25,7 @@ Difficulty: Medium
 */
 
 class Solution {
-public:
+  public:
     /**
      * @param matrix: the given matrix
      * @return: the largest possible sum

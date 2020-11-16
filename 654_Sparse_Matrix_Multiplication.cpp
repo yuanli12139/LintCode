@@ -28,7 +28,7 @@ Difficulty: Medium
 */
 
 class Solution {
-public:
+  public:
     /**
      * @param A: a sparse matrix
      * @param B: a sparse matrix
@@ -71,6 +71,7 @@ public:
         return res;
     }
     
+  private:
     int dotProduct(const vector<pair<int, int>> &vec1, const vector<pair<int, int>> &vec2) {
         int res = 0;
         
@@ -96,3 +97,46 @@ public:
         return res;
     }
 };
+
+
+// Date: 3/19/2019
+class Solution {
+  public:
+    /**
+     * @param A: a sparse matrix
+     * @param B: a sparse matrix
+     * @return: the result of A * B
+     */
+    vector<vector<int>> multiply(vector<vector<int>> &A, vector<vector<int>> &B) {
+        // write your code here
+        int n = A.size();
+        int m = B[0].size();
+        int t = B.size();
+        
+        vector<vector<int>> res(n, vector<int>(m, 0));
+        
+        unordered_map<int, vector<int>> non_zero_cols;
+        for (int r = 0; r < t; ++r) {
+            for (int c = 0; c < m; ++c) {
+                if (B[r][c] != 0) {
+                    non_zero_cols[r].push_back(c);
+                }
+            }
+        }
+        
+        for (int i = 0; i < n; ++i) {
+            for (int k = 0; k < t; ++k) {
+                if (A[i][k] == 0) {
+                    continue;
+                }
+                
+                for (int j : non_zero_cols[k]) {
+                    res[i][j] += A[i][k] * B[k][j]; 
+                }
+            }
+        }
+        
+        return res;
+    }
+};
+

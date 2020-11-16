@@ -79,3 +79,63 @@ class Solution {
         return (start != -1) ? source.substr(start, min_len) : "";
     }
 };
+
+
+// Date: 9/20/2018
+class Solution {
+  public:
+    /**
+     * @param source : A string
+     * @param target: A string
+     * @return: A string denote the minimum window, return "" if there is no such a string
+     */
+    string minWindow(string &source, string &target) {
+        // write your code here
+        if (source.empty()) {
+            return "";
+        }
+        
+        for (char c : target) {
+            ++target_cnt_[c];
+        }
+        
+        int matched_unique_chs = 0;
+        int target_unique_chs = target_cnt_.size();
+        
+        int n = source.size();
+        int start = -1, end = n;
+        
+        for (int i = 0, j = 0; i < n; ++i) {
+            while (j < n && matched_unique_chs < target_unique_chs) {
+                if (target_cnt_.count(source[j])) {
+                    ++source_cnt_[source[j]];
+                    matched_unique_chs += source_cnt_[source[j]] == target_cnt_[source[j]];
+                }
+                ++j;
+            }
+            
+            // j == n
+            if (matched_unique_chs < target_unique_chs) {
+                break;
+            }
+            
+            // found match
+            if (j - i < end - start) {
+                start = i;
+                end = j;
+            }
+            
+            // remove source[i] from the window
+            if (target_cnt_.count(source[i])) {
+                matched_unique_chs -= source_cnt_[source[i]] == target_cnt_[source[i]];
+                --source_cnt_[source[i]];
+            }
+        }
+        
+        return start == -1 ? "" : source.substr(start, end - start);
+    }
+    
+  private:
+    unordered_map<char, int> source_cnt_, target_cnt_;
+};
+

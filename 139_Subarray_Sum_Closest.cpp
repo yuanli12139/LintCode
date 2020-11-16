@@ -14,7 +14,7 @@ Difficulty: Medium
 */
 
 class Solution {
-public:
+  public:
     /*
      * @param nums: A list of integers
      * @return: A list of integers includes the index of the first number and the index of the last number
@@ -56,3 +56,80 @@ public:
         return res;
     }
 };
+
+
+// Date: 2/2/2019
+class Solution {
+  public:
+    /*
+     * @param nums: A list of integers
+     * @return: A list of integers includes the index of the first number and the index of the last number
+     */
+    vector<int> subarraySumClosest(vector<int> &nums) {
+        // write your code here
+        vector<pair<int, int>> pre_sum = {{0, -1}}; // prefix sum -> index
+        for (int i = 0; i < nums.size(); ++i) {
+            pre_sum.emplace_back(pre_sum.back().first + nums[i], i);
+        }
+        
+        sort(pre_sum.begin(), pre_sum.end());
+        
+        int min_sum = INT_MAX;
+        vector<int> res;
+        for (int i = 1; i < pre_sum.size(); ++i) {
+            int left_id = min(pre_sum[i-1].second, pre_sum[i].second) + 1; 
+            int right_id = max(pre_sum[i-1].second, pre_sum[i].second); 
+            
+            if (res.empty()) {
+                res.push_back(left_id);
+                res.push_back(right_id);
+                continue;
+            }
+            
+            if (pre_sum[i].first - pre_sum[i-1].first < min_sum) {
+                res[0] = left_id;
+                res[1] = right_id;
+                
+                min_sum = pre_sum[i].first - pre_sum[i-1].first;
+            }
+        }
+        
+        return res;
+    }
+};
+
+
+// Date: 2/6/2019
+class Solution {
+  public:
+    /*
+     * @param nums: A list of integers
+     * @return: A list of integers includes the index of the first number and the index of the last number
+     */
+    vector<int> subarraySumClosest(vector<int> &nums) {
+        // write your code here
+        vector<pair<int, int>> pre_sum = {{0, -1}}; // prefix sum -> index
+        for (int i = 0; i < nums.size(); ++i) {
+            pre_sum.emplace_back(pre_sum.back().first + nums[i], i);
+        }
+        
+        sort(pre_sum.begin(), pre_sum.end());
+        
+        int min_sum = INT_MAX;
+        vector<int> res(2, 0);
+        
+        for (int i = 1; i < pre_sum.size(); ++i) {
+            if (pre_sum[i].first - pre_sum[i-1].first < min_sum) {
+                int left_id = min(pre_sum[i-1].second, pre_sum[i].second) + 1; 
+                int right_id = max(pre_sum[i-1].second, pre_sum[i].second); 
+                
+                res = {left_id, right_id};
+                
+                min_sum = pre_sum[i].first - pre_sum[i-1].first;
+            }
+        }
+        
+        return res;
+    }
+};
+
