@@ -54,14 +54,14 @@ cclass Solution:
             occupied[intv[1]] -= 1
 
         for i in range(1, len(occupied)):
-            occupied[i] += occupied[i-1]
+            occupied[i] += occupied[i-1] # how many rooms are occupied at a point
            
-        conflicts = [False]    
-        for i in range(1, len(occupied)):
-            conflicts.append(occupied[i] == rooms)
+        conflicts = []    
+        for i in range(len(occupied)):
+            conflicts.append(occupied[i] == rooms) # whether there is a room conflict at a point
             
         for i in range(1, len(conflicts)):
-            conflicts[i] += conflicts[i-1]
+            conflicts[i] += conflicts[i-1] # whether there is a room conflict during a time period
             
         res = []
         for intv in ask:
