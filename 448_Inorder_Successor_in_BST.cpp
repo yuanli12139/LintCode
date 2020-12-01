@@ -60,9 +60,9 @@ class Solution {
         }
         
         // go left
-        TreeNode* left = inorderSuccessor(root->left, p);
-        if (left) {
-            return left;
+        TreeNode* left_res = inorderSuccessor(root->left, p);
+        if (left_res) {
+            return left_res;
         }
         return root;
     }
