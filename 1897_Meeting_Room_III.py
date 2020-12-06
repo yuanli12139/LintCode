@@ -2,7 +2,7 @@
 
 '''
 1897. Meeting Room III
-you have a list intervals of current meetings, and some meeting rooms with start and end timestamp.When a stream of new meeting ask coming in, check if it can be scheduled.A meeting room can only hold one meeting at a time. Each inquiry is independent.
+You have a list intervals of current meetings, and some meeting rooms with start and end timestamp.When a stream of new meeting ask coming in, check if it can be scheduled.A meeting room can only hold one meeting at a time. Each inquiry is independent.
 
 Example 1:
 Input:
