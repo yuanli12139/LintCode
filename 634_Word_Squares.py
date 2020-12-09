@@ -100,7 +100,7 @@ class Solution:
             return
         
         # pruning
-        for r in range(start, n):
+        for r in range(start + 1, n):
             prefix = "".join([square[c][r] for c in range(start)])
             if self.trie.find(prefix) is None:
                 return
