@@ -48,7 +48,7 @@ class Solution {
         // write your code here
         int l1 = num1.length(), l2 = num2.length();
         
-        vector<int> tmp(l1 + l2 + 1, 0); // tmp.size() >= 1
+        vector<int> tmp(l1 + l2, 0); // tmp.size() >= 1
         for (int i = 0; i < l1; ++i) {
             for (int j = 0; j < l2; ++j) {
                 tmp[i+j] += (num1[l1-1 - i] - '0') * (num2[l2-1 - j] - '0'); 
