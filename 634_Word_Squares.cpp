@@ -76,7 +76,7 @@ class Solution {
     
     bool checkPrefix(string word, const vector<string> square) {
         int start = square.size();
-        for (int r = start; r < square[0].size(); ++r) {
+        for (int r = start + 1; r < square[0].size(); ++r) {
             string prefix = "";
             for (int c = 0; c < start; ++c) {
                 prefix += square[c][r];

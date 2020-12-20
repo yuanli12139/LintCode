@@ -61,7 +61,6 @@ class Solution {
         // 1. vectical flip
         for (int r = 0; r < n / 2; ++r) {
             for (int c = 0; c < n; ++c) {
-                int tmp = matrix[r][c];
                 swap(matrix[r][c], matrix[n-1-r][c]);
             }
         }
