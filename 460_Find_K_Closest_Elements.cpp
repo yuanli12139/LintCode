@@ -43,7 +43,7 @@ public:
             if (isLeftCloser(A, target, left, right)) {
                 res.push_back(A[left]);
                 left--;
-            } else if (right < A.size()) {
+            } else {
                 res.push_back(A[right]);
                 right++;
             }
