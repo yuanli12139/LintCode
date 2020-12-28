@@ -25,11 +25,7 @@ public:
         int start0 = 0;
         for (int i = 0; i < nums.size(); i++) {
             if (nums[i] != 0) {
-                int temp = nums[i];
-                nums[i] = nums[start0];
-                nums[start0] = temp;
-                
-                start0++;
+                nums[start0++] = nums[i];
             }
         }
         
