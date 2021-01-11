@@ -63,15 +63,7 @@ public:
                 break;
             }
 
-            int adj_mine = 0;
-            for (int n = 0; n < 8; ++n) {
-                nr = r + dr_[n];
-                nc = c + dc_[n];
-                if (isValid_(board, nr, nc) && board[nr][nc] == 'M') {
-                    adj_mine++;
-                }
-            }
-            
+            int adj_mine = cntAdjMine(board, r, c);
             if (adj_mine) {
                 res[r][c] = adj_mine + '0';
                 continue;
@@ -98,10 +90,22 @@ private:
     vector<vector<bool>> visited_;
     
 private:
-    bool isValid_(vector<vector<char>>& board, int r, int c) {
+    bool isValid_(const vector<vector<char>>& board, int r, int c) {
         if (r < 0 || c < 0 || r >= board.size() || c >= board[0].size() || visited_[r][c]) {
             return false;
         }
         return true;
+    }
+    
+    int cntAdjMine(const vector<vector<char>>& board, int r, int c) {
+        int adj_mine = 0, nr, nc;
+        for (int n = 0; n < 8; ++n) {
+            nr = r + dr_[n];
+            nc = c + dc_[n];
+            if (isValid_(board, nr, nc) && board[nr][nc] == 'M') {
+                adj_mine++;
+            }
+        }
+        return adj_mine;
     }
 };
