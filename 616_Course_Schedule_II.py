@@ -51,11 +51,9 @@ class Solution:
                 
         # decrease in-degree and add new courses with 0 in-degree
         order = []
-        count = 0
         while queue:
             curr_course = queue.pop(0)
             order.append(curr_course)
-            count += 1
             
             if curr_course in next_courses:
                 for nc in next_courses[curr_course]:
@@ -63,7 +61,7 @@ class Solution:
                     if in_degrees[nc] == 0:
                         queue.append(nc)
                     
-        if count == numCourses:
+        if len(order) == numCourses:
             return order
         return []
                 
