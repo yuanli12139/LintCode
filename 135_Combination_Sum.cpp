@@ -53,7 +53,7 @@ public:
         
         for (int i = startIdx; i < candidates.size(); ++i) {
             // remove duplicates
-            if (i != startIdx && candidates[i] == candidates[i-1])
+            if (i != 0 && candidates[i] == candidates[i-1])
                 continue;
                 
             comb.push_back(candidates[i]);
