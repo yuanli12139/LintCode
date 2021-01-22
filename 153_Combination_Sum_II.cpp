@@ -58,7 +58,7 @@ public:
         }
         
         for (int i = startIdx; i < num.size(); ++i) {
-            if (i != 0 && num[i] == num[i-1])
+            if (i != startIdx && num[i] == num[i-1])
                 continue;
                 
             comb.push_back(num[i]);
