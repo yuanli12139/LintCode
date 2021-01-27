@@ -42,6 +42,10 @@ public:
     vector<vector<string>> solveNQueens(int n) {
         // write your code here
         vector<vector<string>> res;
+        if (n <= 0) {
+            return;
+        }
+        
         vector<int> cols;
         
         dfs(n, cols, res);
@@ -49,10 +53,6 @@ public:
     }
     
     void dfs(int n, vector<int> cols, vector<vector<string>> &res) {
-        if (n <= 0) {
-            return;
-        }
-        
         if (cols.size() == n) {
             res.push_back(drawChessboard(cols));
             return;
