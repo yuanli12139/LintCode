@@ -21,6 +21,10 @@ public:
      */
     int totalNQueens(int n) {
         // write your code here
+        if (n <= 0) {
+            return 0;
+        }
+        
         int num_sols = 0;
         vector<int> cols;
         vector<bool> visited(n, false);
@@ -33,11 +37,7 @@ public:
     
     void dfs(int n, vector<int> cols, vector<bool> visited, 
             vector<bool> visited_sub, vector<bool> visited_sum, 
-            int &num_sols) {
-        if (n <= 0) {
-            return;
-        }
-        
+            int &num_sols) {        
         if (cols.size() == n) {
             num_sols++;
             return;
