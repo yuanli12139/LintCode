@@ -75,7 +75,7 @@ class Solution {
     }
         
     bool startsWith(string &str, string &match) {
-        if (str.length() < str.length()) {
+        if (str.length() < match.length()) {
             return false;
         }
         
