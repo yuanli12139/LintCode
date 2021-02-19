@@ -142,7 +142,7 @@ public:
         return res;
     }
     
-    inline bool binarySearch(const vector<int> &nums, int target) {
+    bool binarySearch(const vector<int> &nums, int target) {
         int start = 0, end = nums.size() - 1;
         while (start + 1 < end) {
             int mid = start + (end - start) / 2;
