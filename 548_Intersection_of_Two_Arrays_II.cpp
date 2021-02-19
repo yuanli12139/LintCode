@@ -41,7 +41,7 @@ public:
         return helper(nums2, nums1);
     }
     
-    inline vector<int> helper(const vector<int> &smaller, const vector<int> &larger) {
+    vector<int> helper(const vector<int> &smaller, const vector<int> &larger) {
         vector<int> res;
         
         unordered_map<int, int> num2cnt;
