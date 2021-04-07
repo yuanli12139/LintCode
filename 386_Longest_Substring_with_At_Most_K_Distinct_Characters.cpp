@@ -26,7 +26,10 @@ class Solution {
     int lengthOfLongestSubstringKDistinct(string &s, int k) {
         // write your code here
         int res = 0;
-        
+        // if (k == 0) {
+        //     return res;
+        // } 
+      
         int n = s.length();
         for (int i = 0, j = 0; i < n; ++i) {
             while (j < n && (ch_cnt_.size() < k || ch_cnt_.count(s[j]))) {
